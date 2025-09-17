@@ -54,5 +54,35 @@ or
 ```bash
 ssh -Y <username>@ee-mill2.ee.ic.ac.uk
 ```
-Once you have logon, create your directory structure for this module's coursework, e.g. Lab_1, Lab_2 etc.. 
+Once you have logon, create your directory structure for this module's coursework, e.g. Lab_1, Lab_2 etc..   Within Lab_1, create the following folders to store the various types of files created or generated for this lab:
+* **SRC** - where you put the HDL sources
+* **OUTPUTS** - where all generated files from sythesis are stored
+* **REPORTS** - where all reports are stored
+* **SAVES** - where incomplete designs are saved for incremental development
+  
+Using your favourite editor, create the following SystemVerilog source file *_lfsr4.sv_*, a 4-bit linear feedback register (something you did in your 2nd year with me).
+
+```systemverilog
+module lfsr4 (
+    // simple 4-bit linear feedback shift register.
+    // primitive polynomial is x^4 + x^3 + 1
+    // Author: Peter YK Cheung
+    // Version: 1.0, 17-9-25
+
+  input logic clk,        // clock
+  input logic rst,        // reset
+  output logic [3:0]  data_out    // pseudo-random output
+);
+
+  logic [4:1]     sreg;
+
+  always_ff @ (posedge clk, posedge rst)
+    if (rst)
+        sreg <= 4'b1;
+    else 
+	sreg <= {sreg[3:1], sreg[3] ^ sreg[4]};
+
+  assign data_out = sreg;
+endmodule 
+```
 
