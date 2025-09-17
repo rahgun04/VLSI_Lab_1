@@ -78,9 +78,9 @@ module lfsr4 (
 
   always_ff @ (posedge clk, posedge rst)
     if (rst)
-        sreg <= 4'b1;
+      sreg <= 4'b1;
     else 
-	sreg <= {sreg[3:1], sreg[3] ^ sreg[4]};
+	    sreg <= {sreg[3:1], sreg[3] ^ sreg[4]};
 
   assign data_out = sreg;
 endmodule 
