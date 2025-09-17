@@ -10,7 +10,7 @@
 ---
 ## Objectives
 ---
-By the end of this laboratory sesion, you should be able to:
+By the end of \textcolor{blue}{this laboratory} session, you should be able to:
 * set up your personal laptop environment for **Cadence software** running on our teaching servers
 * use *Genus* EDA package to synthesize a simple circuit from **HDL to standard cells**
 * understand the **steps required** to take an RTL specificagtion to silicon using standard cells 
