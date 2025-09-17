@@ -142,7 +142,7 @@ set MAP_OPT_EFF high  ;# mapping and optimization effort
 set _OUTPUTS_PATH OUTPUTS   ;# where to store output files
 set _REPORTS_PATH REPORTS   ;# where to store synthesis reports
 ```
-You can copy and paste these commands directly into Genus.
+Copy and paste these Tcl commands directly into Genus.  Make sure that you know what they do.
 
 **_Step 4: Specify where the standard cell libraries can be found_**
 
@@ -189,14 +189,54 @@ set_clock_transition -fall  50 ${CLOCK_NAME}
 ```
 These clock specifications are necessary for Genus' synthesis and optimization algorithm to try meet the timing requirements.
 
-**_Step 6: Synthesis to generic gate
+**_Step 6: Synthesis to gates_**
 Enter these Tcl commands in Genus:
-
 ```tcl
+# First to generic gates
 set_db syn_generic_effort $GEN_EFF
 syn_generic
 
-write_snapshot -directory ${_REPORTS_PATH}/generic -tag generic
-report_dp > ${_REPORTS_PATH}/generic/${DESIGN}_datapath.rpt
+# Then to TSMC gates
+set_db syn_map_effort $MAP_OPT_EFF
+syn_map
+
+write_snapshot -directory ${_REPORTS_PATH}/map -tag map
+report_dp > ${_REPORTS_PATH}/map/${DESIGN}_datapath.rpt
 report_summary -directory ${_REPORTS_PATH}
 ```
+When you copy and paste these commands to Genus, you may also want to examine the ./OUTPUTS and ./REPORTS folder to see what have been generated.
+
+**_Step 7: Optimize the netlist and write all reports and output files_**
+Enter these Tcl commands in Genus:
+```tcl
+# Optimize netlist
+set_db syn_opt_effort $MAP_OPT_EFF
+syn_opt
+write_snapshot -directory ${_REPORTS_PATH}/opt -tag syn_opt
+report_dp > ${_REPORTS_PATH}/opt/${DESIGN}_datapath.rpt
+report_summary -directory ${_REPORTS_PATH}
+
+# Export Design Files
+write_snapshot -directory ${_REPORTS_PATH}/final -tag final
+report_summary -directory ${_REPORTS_PATH}
+write_hdl > ${_OUTPUTS_PATH}/${DESIGN}_synth.v
+write_sdc > ${_OUTPUTS_PATH}/${DESIGN}_synth.sdc
+write_sdf > ${_OUTPUTS_PATH}/${DESIGN}_synth.sdf
+write_script > ${_OUTPUTS_PATH}/${DESIGN}.script
+write_design -base_name ${_OUTPUTS_PATH}/DESIGN/${DESIGN}_synth
+write_db -all_root_attributes -script ${_OUTPUTS_PATH}/DESIGN/${DESIGN}_synth.tcl    
+
+# Write reports
+report_qor > ${_REPORTS_PATH}/${DESIGN}_qor.rpt
+report_area > ${_REPORTS_PATH}/${DESIGN}_area.rpt
+report_dp > ${_REPORTS_PATH}/${DESIGN}_datapath_incr.rpt
+report_messages > ${_REPORTS_PATH}/${DESIGN}_messages.rpt
+report_gates > ${_REPORTS_PATH}/${DESIGN}_gates.rpt
+report_timing > ${_REPORTS_PATH}/${DESIGN}_timing.rpt
+report_power > ${_REPORTS_PATH}/${DESIGN}_power.rpt
+```
+Congratulations!  You have managed to sytnesize your HDL design into gates.
+
+> Identify the synthesized circuit from the OUTPUTS directory.
+> Examine the sytnesized Verilog file and be satisfied that it is what you expected.
+
