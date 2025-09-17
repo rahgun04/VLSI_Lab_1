@@ -1,27 +1,26 @@
 #### Department of Electrical & Electronic Engineering, Imperial College London
 
 
-### EIE 2 Instruction Set Architecture & Compiler (IAC)
----
+### EE4/EIE4 Lab 1 - A Quick Start with Cadence
 
+## Lab 1 - A Quick Start with Cadence
 
-## Lab 1 – Learning System Verilog with Verilator and Vbuddy
-##### *Peter Cheung, v1.2 - 28 Oct 2022*
+##### *Peter Cheung, v0.1 - 17 October 2025*
 
 ---
 ## Objectives
 ---
-By the end of this experiment, you should be able to:
-* write a basic **System Verilog module** for a binary counter
-* write a basic **testbench** in C++ to verify the counter is working
-* make an executable model of the counter and testbench using **Verilator**
-* understand how the counter hardware is **mapped to C++ model**
-* use **GTKwave** to examine the waveforms
-* use the **Vbuddy board** to display outputs from the simulation model
-* design a **programmable up/down counter** with different incremental steps
-* single step the counter using the rotary encoder switch on Vbuddy
-* implement in System Verilog a circuit to translate a binary number to a BCD number (optional)
-
+By the end of this laboratory sesion, you should be able to:
+* set up your personal laptop environment for **Cadence software** running on our teaching servers
+* use *Genus* EDA package to synthesize a simple circuit from **HDL to standard cells**
+* understand the **steps required** to take an RTL specificagtion to silicon using standard cells 
+* interpret the **timing** and **size estimates** reported by Genus
+* use **Innovus** EDA package to **place and route** the synthesized circuit 
+* understand how to write a **Tcl script** to perform synthesis and place-and-route
+* perform basic **Design Rule Check** (DRC) and **layout verification check** (LVS) on the circuit
+* use **Xcelium** simulator to **verify** that synthesised and place-and-routed circuit works
+* use **GTKwave** to inspect simulation results
+* inspect the resulting **silicon layout** of the circuit
 
 ## Pre-requisites
 ---
