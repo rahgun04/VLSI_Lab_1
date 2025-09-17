@@ -237,6 +237,107 @@ report_power > ${_REPORTS_PATH}/${DESIGN}_power.rpt
 ```
 Congratulations!  You have managed to sytnesize your HDL design into gates.
 
-> Identify the synthesized circuit from the OUTPUTS directory.
-> Examine the sytnesized Verilog file and be satisfied that it is what you expected.
+> * Identify the synthesized circuit from the OUTPUTS directory.
+> * Examine the sytnesized Verilog file and be satisfied that it is what you expected.
+> * What are the standard cells used?
+
+**_Step 8: Finishing the sytnesis task_**
+
+* Use the exit command to leave Genus tool.
+
+* Create in the Lab 1 folder the Tcl script **_synth.tcl_** that combines ALL the Tcl commands above. 
+* Launch Genus again and re-run the synthesis process with the *_synth.tcl_* script as one command:
+```tcl
+source synth.tcl
+```
+You should produce the same result at the end of step 7.
+
+> From now on, you just need to modify this script slightly and run the script to synthesize other new designs.
+
+---
+### Task 3 - Place and Route the standard cells
+---
+In this task, you will use Innovus, Cadence's place-and-route (PnR) tools, the produce the physical layout of your **_lfsr4_** design.  For PnR, you must have XQuartz running if you are using a Mac.
+
+LEF (Library Exchange Format) files in Electronic Design Automation (EDA) tools are ASCII files that provide an abstract, physical description of integrated circuit (IC) components like standard cells and macro blocks. They contain essential information for place and route (P&R) tools, such as cell dimensions, pin locations, metal layers, and via definitions, enabling tools to arrange and connect components without needing the full layout details. LEF files are critical for the backend physical design process and are often used alongside Design Exchange Format (DEF) files.  
+
+an SDC (Synopsys Design Constraints) file is an ASCII text file that defines design intent, specifying timing, power, and area constraints for a digital circuit design. It uses Tcl (Tool Command Language) to communicate parameters like clock definitions, input/output delays, and timing exceptions, which guide EDA tools during synthesis, placement, and timing analysis to ensure the design meets performance requirements. 
+
+An MMMC (Multi-Mode, Multi-Corner) file in Electronic Design Automation (EDA) tools defines the various operating conditions for a chip design, including different modes (functional states) and corners (variations in process, voltage, and temperature). This file allows timing analysis tools to check if the chip will perform correctly under all potential operating scenarios, ensuring design stability and timing closure by verifying the chip's performance across different PVT corners and operating modes.  
+
+Launch **Innovus** by entering:
+```bash
+Innovus
+```
+
+**_Step 1: Set up variables_**
+Enter these Tcl command:
+```tcl
+#Top-level module name
+set DESIGN lfsr4                                  ;# top-level module name            
+set VERILOG_FILES [list OUTPUTS/lfsr4_synth.v]    ;# output synthsis task
+set SDC_FILE OUTPUTS/lfsr4_synth.sdc              ;# specify constraints for PnR
+
+# Set Floorplan parameters (unit in um)
+set CORE_ASPECT_RATIO 1.0                         ;# square layout
+set CORE_UTILIZATION 0.6                          ;# 40% for routing of signal & power
+set COREGAP 5                                     ;# gap from power ring to core
+
+# Set Power Ring parameters (in um)
+# The power ring is a rectangular area around the core that provides power and ground connections.
+set POWER_RING_WIDTH 2                            ;# width of wire
+set POWER_RING_SPACING 1                          ;# spacing between wires
+set POWER_RING_OFFSET 1                           ;# distance from core boundary
+
+# Setup PnR environment and say where library can be found
+set init_verilog ${VERILOG_FILES}
+set init_top_cell ${DESIGN}
+set init_lef_file { \
+    /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef \
+    /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tphn65lpnv2od3_sl_200b/mt_2/9lm/lef/tphn65lpnv2od3_sl_9lm.lef \
+    /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tpbn65v_200b/wb/9m/9M_6X2Z/lef/tpbn65v_9lm.lef \
+    }                                             ;# use these abstract standard cell for PnR
+set init_mmmc_file "./mmmc_timing.tcl"            ;# specify corner conditions the chip operates under (i.e. temperature, voltages etc.)
+set init_gnd_net {VSS}
+set init_pwr_net {VDD}
+
+setDesignMode -process 65
+init_design
+setDesignMode -topRoutingLayer 7                  ;# TSMC 65nm LP process has 10 metal layers
+```
+
+**_Step 2: Floor Planning_**
+Enter these Tcl command:
+```tcl
+# Plan how the overall layout, particularly where power wires go
+floorplan -r ${CORE_ASPECT_RATIO} ${CORE_UTILIZATION} ${COREGAP} ${COREGAP} ${COREGAP} ${COREGAP} 
+globalNetConnect VSS -type pgpin -pin VSS -all -override
+globalNetConnect VDD -type pgpin -pin VDD -all -override
+globalNetConnect VDD -type tiehi -pin VDD -all -override
+globalNetConnect VSS -type tielo -pin VSS -all -override
+
+# Add power ring
+addRing -width ${POWER_RING_WIDTH} -spacing ${POWER_RING_SPACING} -offset ${POWER_RING_OFFSET} -layer {top M1 bottom M1 
+left M2 right M2} -center 1 -nets { VSS VDD }
+
+# Special routing for power and ground nets
+sroute -nets { VSS VDD} -allowJogging true -allowLayerChange true -blockPin useLef -connect {blockPin padPin padRing cor
+ePin floatingStripe }
+
+# Insert well taps to prevent latch up
+addWellTap -cell TAPCELLBWP7T -prefix welltap -cellInterval 60 -checkerBoard
+
+timeDesign -prePlace -expandedViews -outDir ./REPORTS/prePlace -prefix prePlace
+```
+
+**_Step 3: Placement_**
+Enter these Tcl command:
+```tcl
+# Placement 
+setPlaceMode -place_global_place_io_pins true 
+place_opt_design 
+setTieHiLoMode -maxFanout 10 -maxDistance 50
+addTieHiLo -cell "TIEHBWP7T TIELBWP7T" 
+timeDesign -preCTS -outDir REPORTS/preCTS -prefix preCTS
+```
 
