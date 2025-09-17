@@ -142,7 +142,7 @@ set MAP_OPT_EFF high  ;# mapping and optimization effort
 set _OUTPUTS_PATH OUTPUTS   ;# where to store output files
 set _REPORTS_PATH REPORTS   ;# where to store synthesis reports
 ```
-Copy and paste these Tcl commands directly into Genus.  Make sure that you know what they do.
+Copy and paste these Tcl commands directly into Genus. (copy icon on top right corner of code.)  Make sure that you know what each Tcl command does.
 
 **_Step 4: Specify where the standard cell libraries can be found_**
 
