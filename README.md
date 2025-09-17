@@ -62,7 +62,7 @@ Once you have logon, create your directory structure for this module's coursewor
   
 Using your favourite editor, create the following SystemVerilog HDL source *_lfsr4.sv_* in the **SRC** folder. This is a 4-bit linear feedback register used in 2nd year labs.
 
-```verilog
+```v
 module lfsr4 (
     // simple 4-bit linear feedback shift register.
     // primitive polynomial is x^4 + x^3 + 1
