@@ -330,7 +330,8 @@ timeDesign -prePlace -expandedViews -outDir ./REPORTS/prePlace -prefix prePlace
 ```
 > What is the result of this floorplanning step?
 
-**_Step 3: Perform Placement_**
+**_Step 3: Placement_**
+
 This step places the standard cells specified in the synthesized netlist sucn that various constraints such as aspect ratio and how much of the core area is used up are met.  This step also perform preliminary check on timing constraints sepcified earlier based on the timing properties of the standard cells used.
 
 ```tcl
