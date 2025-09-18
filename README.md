@@ -257,21 +257,19 @@ You should produce the same result at the end of step 7.
 ---
 ### Task 3 - Place and Route the standard cells
 ---
-In this task, you will use Innovus, Cadence's place-and-route (PnR) tools, the produce the physical layout of your **_lfsr4_** design.  For PnR, you must have XQuartz running if you are using a Mac.
+In this task, you will use Innovus, Cadence's place-and-route (PnR) tools, the produce the physical layout of your **_lfsr4_** design.  For PnRa, and if you are using a Mac, you must have XQuartz running.
 
-LEF (Library Exchange Format) files in Electronic Design Automation (EDA) tools are ASCII files that provide an abstract, physical description of integrated circuit (IC) components like standard cells and macro blocks. They contain essential information for place and route (P&R) tools, such as cell dimensions, pin locations, metal layers, and via definitions, enabling tools to arrange and connect components without needing the full layout details. LEF files are critical for the backend physical design process and are often used alongside Design Exchange Format (DEF) files.  
-
-an SDC (Synopsys Design Constraints) file is an ASCII text file that defines design intent, specifying timing, power, and area constraints for a digital circuit design. It uses Tcl (Tool Command Language) to communicate parameters like clock definitions, input/output delays, and timing exceptions, which guide EDA tools during synthesis, placement, and timing analysis to ensure the design meets performance requirements. 
-
-An MMMC (Multi-Mode, Multi-Corner) file in Electronic Design Automation (EDA) tools defines the various operating conditions for a chip design, including different modes (functional states) and corners (variations in process, voltage, and temperature). This file allows timing analysis tools to check if the chip will perform correctly under all potential operating scenarios, ensuring design stability and timing closure by verifying the chip's performance across different PVT corners and operating modes.  
+Place and route procedure consists of many steps.  After each step, Innovus displays the latest progress in the form of chip layout in a separate window.  To understand what each fo the PnR steps does, you are recommended to perform each step, one at a time, and record what you discover from both the layout window and from the terminal window.  This will help you debug problems when you design a complex circuit later.
 
 Launch **Innovus** by entering:
 ```bash
-Innovus
+innovus
 ```
 
 **_Step 1: Set up variables_**
-Enter these Tcl command:
+
+We first set up the relevent variables for Innovus.  The key parameters here are those that define properties of the standard cell core and the power ring sizes.
+
 ```tcl
 #Top-level module name
 set DESIGN lfsr4                                  ;# top-level module name            
@@ -285,9 +283,9 @@ set COREGAP 5                                     ;# gap from power ring to core
 
 # Set Power Ring parameters (in um)
 # The power ring is a rectangular area around the core that provides power and ground connections.
-set POWER_RING_WIDTH 2                            ;# width of wire
-set POWER_RING_SPACING 1                          ;# spacing between wires
-set POWER_RING_OFFSET 1                           ;# distance from core boundary
+set POWER_RING_WIDTH 1                            ;# width of wire
+set POWER_RING_SPACING 0.5                         ;# spacing between wires
+set POWER_RING_OFFSET 0.5                          ;# distance from core boundary
 
 # Setup PnR environment and say where library can be found
 set init_verilog ${VERILOG_FILES}
@@ -305,6 +303,7 @@ setDesignMode -process 65
 init_design
 setDesignMode -topRoutingLayer 7                  ;# TSMC 65nm LP process has 10 metal layers
 ```
+> What is the result of this PnR step?
 
 **_Step 2: Floor Planning_**
 Enter these Tcl command:
@@ -329,9 +328,11 @@ addWellTap -cell TAPCELLBWP7T -prefix welltap -cellInterval 60 -checkerBoard
 
 timeDesign -prePlace -expandedViews -outDir ./REPORTS/prePlace -prefix prePlace
 ```
+> What is the result of this floorplanning step?
 
-**_Step 3: Placement_**
-Enter these Tcl command:
+**_Step 3: Perform Placement_**
+This step places the standard cells specified in the synthesized netlist sucn that various constraints such as aspect ratio and how much of the core area is used up are met.  This step also perform preliminary check on timing constraints sepcified earlier based on the timing properties of the standard cells used.
+
 ```tcl
 # Placement 
 setPlaceMode -place_global_place_io_pins true 
@@ -340,4 +341,54 @@ setTieHiLoMode -maxFanout 10 -maxDistance 50
 addTieHiLo -cell "TIEHBWP7T TIELBWP7T" 
 timeDesign -preCTS -outDir REPORTS/preCTS -prefix preCTS
 ```
+> What is the results of this placement step?
 
+**_Step 4: Clock tree insertion_**
+
+To meet the timing requirements of a synchronous circuit, a well designed clock tree circuit is vital.  Details of clock tree design will be covered in a later lecture.  Innovus provides an automatic clock tree insertion tool. Routing and buffer sizing of the clock tree is done before the finally routing.  This is achieve by the following.
+
+```tcl
+set_ccopt_property buffer_cells {CKBD0BWP7T CKBD1BWP7T CKBD2BWP7T CKBD3BWP7T CKBD4BWP7T CKBD6BWP7T CKBD8BWP7T CKBD10BWP7T CKBD12BWP7T}
+set_ccopt_property inverter_cells {CKND0BWP7T CKND1BWP7T CKND2BWP7T CKND3BWP7T CKND4BWP7T CKND6BWP7T CKND8BWP7T CKND10BWP7T CKND12BWP7T}
+setOptMode -usefulSkew true
+setOptMode -usefulSkewCCOpt extreme
+create_ccopt_clock_tree_spec -file REPORTS/ctsspec.tcl
+source REPORTS/ctsspec.tcl
+ccopt_design -check_prerequisites
+ccopt_design
+
+optDesign -postCTS -setup -hold -outDir REPORTS/postCTSOptTiming
+timeDesign -postCTS -expandedViews -outDir REPORTS/postCTS -prefix postCTS
+report_ccopt_clock_trees -file REPORTS/postCTS/clock_trees.rpt
+report_ccopt_skew_groups -file REPORTS/postCTS/skew_groups.rpt
+```
+> What is the result of clock tree insertion?
+
+**_Step 5: Routing_**
+```tcl
+routeDesign                         ;# this does the routing
+## Set analysis on on-chip variation (OCV) mode 
+setAnalysisMode -analysisType onChipVariation -skew true -clockPropagation sdcControl
+optDesign -postRoute -setup
+optDesign -postRoute -hold
+```
+
+Congratulations!  You should now see the completed layout of the lfsr4 circuit as shown below.  
+
+<p align="center"> <img src="diagrams/lfsr4_layout.jpg" /> </p><BR>
+
+> Compare the circuit produced by Genus after synthesize to that produced by Innovus after PnR.  Comment on how PnR optimization has modified the original circuit.
+> Examine what files are generated by Innovus in the OUTPUTS and REPORTS folders.
+
+
+
+
+
+
+
+
+LEF (Library Exchange Format) files in Electronic Design Automation (EDA) tools are ASCII files that provide an abstract, physical description of integrated circuit (IC) components like standard cells and macro blocks. They contain essential information for place and route (P&R) tools, such as cell dimensions, pin locations, metal layers, and via definitions, enabling tools to arrange and connect components without needing the full layout details. LEF files are critical for the backend physical design process and are often used alongside Design Exchange Format (DEF) files.  
+
+an SDC (Synopsys Design Constraints) file is an ASCII text file that defines design intent, specifying timing, power, and area constraints for a digital circuit design. It uses Tcl (Tool Command Language) to communicate parameters like clock definitions, input/output delays, and timing exceptions, which guide EDA tools during synthesis, placement, and timing analysis to ensure the design meets performance requirements. 
+
+An MMMC (Multi-Mode, Multi-Corner) file in Electronic Design Automation (EDA) tools defines the various operating conditions for a chip design, including different modes (functional states) and corners (variations in process, voltage, and temperature). This file allows timing analysis tools to check if the chip will perform correctly under all potential operating scenarios, ensuring design stability and timing closure by verifying the chip's performance across different PVT corners and operating modes.  
