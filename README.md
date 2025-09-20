@@ -5,7 +5,7 @@
 
 ### Lab 1 - A Quick Start with Cadence
 
-##### *Peter Cheung, v0.2 - 19 October 2025*
+##### *Peter Cheung, v0.2 - 2 October 2025*
 
 ---
 ### Objectives
