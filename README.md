@@ -254,7 +254,7 @@ Congratulations!  You have managed to synthesize your HDL design into gates
 ```tcl
 source synth.tcl
 ```
-You should produce the same result as that afer step 7.
+You should produce the same result as that after step 7.
 
 > From now on, you can run this script after you made changes to your desing.  Further, you can use this script as template to synthesize other new designs.
 
