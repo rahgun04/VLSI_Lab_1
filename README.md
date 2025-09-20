@@ -305,7 +305,7 @@ Launch **Innovus** by entering:
 innovus 
 ```
 
-**_Step 3: Set up variables_**
+**_Step 2: Set up variables_**
 
 We first set up the relevent variables for *_Innovus_*.  The key parameters here are those that define properties of the standard cell core and the power ring sizes.
 
@@ -344,7 +344,7 @@ init_design
 > What is the result of this PnR step?
 
 
-**_Step 2: Floor Planning_**
+**_Step 3: Floor Planning_**
 
 Enter these Tcl command:
 ```tcl
@@ -370,7 +370,7 @@ You should see graphical information on the layout window. Use the 'f' key to fi
 
 > What is the result of this floorplanning step?  What are *_well taps_* and why are they needed?
 
-**_Step 3: Placement_**
+**_Step 4: Placement_**
 
 This step places the standard cells specified in the synthesized netlist such that various constraints such as aspect ratio and how much of the core area is used up are met.  This step also performs preliminary check on timing constraints specified earlier based on the timing properties of the standard cells used.
 
@@ -384,7 +384,7 @@ timeDesign -preCTS -outDir REPORTS/preCTS -prefix preCTS
 ```
 > What is the results of this placement step?
 
-**_Step 4: Clock tree insertion_**
+**_Step 5: Clock tree insertion_**
 
 To meet the timing requirements of a synchronous circuit, a well designed clock tree circuit is vital.  Details of clock tree design will be covered in a later lecture.  *_Innovus_* provides a clock tree synthesis (CTS) tool. Routing and buffer sizing of the clock tree is done before the finally routing.  This is achieved by the following.
 
@@ -413,7 +413,7 @@ report_ccopt_skew_groups -file REPORTS/postCTS/skew_groups.rpt
 ```
 > What is the result of clock tree insertion?
 
-**_Step 5: Routing_**
+**_Step 6: Routing_**
 ```tcl
 routeDesign                         ;# this does the routing
 ## Set analysis on on-chip variation (OCV) mode 
@@ -421,7 +421,7 @@ setAnalysisMode -analysisType onChipVariation -skew true -clockPropagation sdcCo
 optDesign -postRoute -setup
 optDesign -postRoute -hold
 ```
-**_Step 6: Finishing  up_**
+**_Step 7: Finishing  up_**
 
 ```tcl
 # Add filler cells to fill gaps 
