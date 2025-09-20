@@ -237,7 +237,7 @@ report_gates > ${_REPORTS_PATH}/${DESIGN}_gates.rpt
 report_timing > ${_REPORTS_PATH}/${DESIGN}_timing.rpt
 report_power > ${_REPORTS_PATH}/${DESIGN}_power.rpt
 ```
-Congratulations!  You have managed to sytnesize your HDL design into gates
+Congratulations!  You have managed to synthesize your HDL design into gates
 
 > * Identify the synthesized circuit from the OUTPUTS directory.
 > * Examine the sytnesized Verilog file and be satisfied that it is what you expected.
