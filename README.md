@@ -261,7 +261,7 @@ You should produce the same result as that after step 7.
 ---
 ### Task 3 - Place and Route the standard cells
 ---
-In this task, you will use **_Innovus_**, Cadence's place-and-route (PnR) tools, to produce the physical layout of your **_lfsr4_** design.  If you are using a Mac, you must have **_XQuartz_** running on your laptop for this to work.  For PC users, **_MobaXterm_** has the X server built-in.
+In this task, you will use **_Innovus_**, Cadence's place-and-route (PnR) tools, to produce the physical layout of your **_lfsr4_** design.  If you are using a Mac, you must have **_XQuartz_** running on your laptop for this to work.  For PC users, **_MobaXterm_** has the X server built in.
 
 The place and route procedure consists of many steps.  After each step, *_Innovus_* displays the latest progress in the form of chip layout in a separate graphical window.  To understand what each PnR steps does, you are recommended to perform each step separately, and record what you discover from both the layout window and from the terminal window.  This will help you appreciate what each PnR step does, and how to debug problems when you design a more complex circuit later.
 
