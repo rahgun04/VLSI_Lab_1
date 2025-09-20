@@ -1,38 +1,38 @@
 ##### Department of Electrical & Electronic Engineering, Imperial College London
 
 
-#### EE4/EIE4 Lab 1 - A Quick Start with Cadence
+#### ELEC70142 Digital VLSI Design
 
 ### Lab 1 - A Quick Start with Cadence
 
-##### *Peter Cheung, v0.1 - 17 October 2025*
+##### *Peter Cheung, v0.2 - 19 October 2025*
 
 ---
 ### Objectives
 ---
-By the end of this laboratory session, you should be able to:
-* set up your personal laptop environment for **Cadence software** running on our teaching servers
-* use *Genus* EDA package to synthesize a simple circuit from **HDL to standard cells**
-* understand the **steps required** to take an RTL specificagtion to silicon using standard cells 
-* interpret the **timing** and **size estimates** reported by Genus
-* use **Innovus** EDA package to **place and route** the synthesized circuit 
-* understand how to write a **Tcl script** to perform synthesis and place-and-route
-* perform basic **Design Rule Check** (DRC) and **layout verification check** (LVS) on the circuit
-* use **Xcelium** simulator to **verify** that synthesised and place-and-routed circuit works
-* use **GTKwave** to inspect simulation results
-* inspect the resulting **silicon layout** of the circuit
+By the end of this laboratory session, you should be able to do the following.
+* Set up your personal laptop environment for **Cadence EDA software** running on our teaching servers.
+* Use **_Genus_** EDA package to synthesize a simple circuit from **HDL to standard cells**.
+* Understand the **steps required** to take a RTL specification to silicon using standard cells. 
+* Interpret the **timing** and **size estimates** reported by *Genus*.
+* Use **_Innovus_** EDA package to **place and route** the synthesized circuit. 
+* Understand how to write a **Tcl script** to perform synthesis and place-and-route.
+* Perform basic **Design Rule Check** (DRC) and **layout verification check** (LVS) on the circuit.
+* Use **_Xcelium_** simulator to **verify** that synthesised and place-and-routed circuit works.
+* Use **_GTKwave_** to inspect simulation results.
+* Inspect the resulting **silicon layout** of the circuit.
 
 ---
 ### Before you start
 ---
 
->Before you even start this laboratory session, you must have signed the TSMC's **non-disclosure agreement (NDA)**, and have return this to me.  Remember that you MUST abide by the restrictions stipulated in the NDA.
+>Before you even start this laboratory session, you must have signed the TSMC's **non-disclosure agreement (NDA)**, and have returned this to me.  Remember that you MUST abide by the restrictions stipulated in the NDA.
 
-Although you could use the PCs provided by the Department in Room 507 for this lab, I recommend you to bring your own laptop with you.  There are many displays units in the room for your to plug in your laptop and use a larger screen for this lab.
+Although you could use the PCs provided by the Department in Room 507 for this lab, I recommend that you  bring your own laptop.  There are many displays units in the room for your to plug in your laptop and use a larger screen for this lab. You will be working in pairs. 
 
 If you are using a Windows PC, you will need to have [MobaXterm]([https://mobaxterm.mobatek.net) installed. This provides a feature-rich terminal environment with built-in X server and ssh client.
 
-If you are a MacBook user, you already have the Terminal application in Mac OSX. You also need to install [XQuartz](https://www.xquartz.org) X server to run Cadence.
+If you are a MacBook user, you already have the Terminal applicatio as part of OSX. You also need to install [XQuartz](https://www.xquartz.org) X server to run Cadence.
 
 ---
 ### Task 1 - Connect to the Teaching Server
@@ -40,13 +40,13 @@ If you are a MacBook user, you already have the Terminal application in Mac OSX.
 
 To access Imperial College's resources from your personal laptop, you will need to connect to the Universal Access provision after running [Zscaler](https://uafiles.cc.ic.ac.uk/). After authentication, you will be able to access file systems and computer servers.
 
-Cadence is installed and runs on the EEE servers, which you access via SSH. There are two
+Cadence is installed and runs on the EEE teaching servers, which you access via SSH. There are two
  servers available:
 
 * ee-mill1.ee.ic.ac.uk
 * ee-mill2.ee.ic.ac.uk
 
-For **Windows**: Use [MobaXterm]([https://mobaxterm.mobatek.net) to create a new sesion by entering the server address with your username and password.
+For **Windows**: Use [MobaXterm]([https://mobaxterm.mobatek.net) to create a new session by entering the server address with your username and password.
 
 For **Mac**: Use [XQuartz](https://www.xquartz.org). After installation and opening XQuartz, enter:
 ```bash
@@ -70,20 +70,16 @@ module lfsr4 (
     // primitive polynomial is x^4 + x^3 + 1
     // Author: Peter YK Cheung
     // Version: 1.0, 17-9-25
-
   input logic clk,        // clock
   input logic rst,        // reset
   output logic [3:0]  data_out    // pseudo-random output
 );
-
   logic [4:1]     sreg;
-
   always_ff @ (posedge clk, posedge rst)
     if (rst)
       sreg <= 4'b1;
     else 
 	    sreg <= {sreg[3:1], sreg[3] ^ sreg[4]};
-
   assign data_out = sreg;
 endmodule 
 ```
@@ -94,34 +90,36 @@ endmodule
 
 **_Step 1: Specify the PDK for your design_**
 
-In this task, you will learn how to implement the LFSR circuit using TSMC 65nm standard cells.  Before you start, you need to specify which *process design kit (PDK)** you will be using. 
+In this task, you will learn how to implement the LFSR circuit using TSMC 65nm standard cells.  Before you start, you need to specify which **_process design kit (PDK)_** you will be using. 
 
-Change to the Lab 1 directory and enter:
+Move to the Lab 1 directory and enter:
 
 ```bash
 pdk
 ```
-This will show you all the PDK installed on the server.  Choose the TSMC 65nm low power process PDK by enter:
+This will show you all the PDKs available on the server.  Choose the TSMC 65nm low power process PDK by enter:
 ```bash
 pdk tsmc65LP
 ```
-
+> The *_pdk_* command must be run every time before you run your **_first_** Cadence EDA tool.  This sets up the environmental variables required by Cadence tools, and you are set up to use the TSMC 65nm lower power process thereafter.
+> 
 **_Step 2: Launching the Genus tool_**
 
-Cadence Genus tool synthesizes your RTL specification in SystemVerilog into optimized gate-level netlist. The output is a Verilog specifications of gates (in our case, standard cells) which can be implemented as silicon layout.
+Cadence Genus tool synthesizes your RTL specification in SystemVerilog into optimized gate-level netlist. The output is a Verilog specifications of gates (in our case, standard cells) which can be implemented as silicon layout through a placement and routing process later (called PnR).
 
-Launch Genus by typeing:
+Launch Genus by typing:
 ```bash
 genus
 ```
 
 When you see the prompt **_@genus:rool: 1\>_**, you are inside the Genus tool environment.  
 
-Genus accepts Tcl scripts (**T**ool **C**ommand **L**anguage).  While you may want to learn Tcl for personal interest, you are not going to use any complex syntax of Tcl in this lab.  Here are some resources:
+Genus accepts **_Tcl_** scripts (**T**ool **C**ommand **L**anguage).  While you may want to learn Tcl for personal interest, you are not going to use any complex syntax of Tcl in this lab.  If you want to find out more about Tcl, 
+here are some useful resources:
 
-* a [tutorial video](https://www.youtube.com/watch?v=o_mhSa5HQCc) on Tcl
-* an 3-page [online tutorial](https://www.asic-world.com/scripting/tcl1.html)
-* a comprehensive [cheatsheet](https://cheatography.com/aha/cheat-sheets/tcl-language/)
+* a [tutorial video](https://www.youtube.com/watch?v=o_mhSa5HQCc) on Tcl;
+* an 3-page [online tutorial](https://www.asic-world.com/scripting/tcl1.html);
+* a comprehensive [cheatsheet](https://cheatography.com/aha/cheat-sheets/tcl-language/).
   
 **_Step 3: Set various environment variables and design name_**
 
@@ -129,20 +127,20 @@ Enter these Tcl commands in Genus:
 ```tcl
 # Variable setup
 set _HDL_DIRECTORY ./SRC
-set HDL_FILES [list lfsr4.sv]
-set DESIGN lfsr4
+set HDL_FILES [list lfsr4.sv]           ;* list of sources
+set DESIGN lfsr4                        ;* top-level module name
 
 # Clock name should match the clock signal name in HDL (i.e. clk, CLK, ...)
 set CLOCK_NAME clk
 set CLOCK_PERIOD_ps 1000
 
-set GEN_EFF medium    ;# synthesis effort
-set MAP_OPT_EFF high  ;# mapping and optimization effort
+set GEN_EFF medium                      ;# synthesis effort
+set MAP_OPT_EFF high                    ;# mapping and optimization effort
 
-set _OUTPUTS_PATH OUTPUTS   ;# where to store output files
-set _REPORTS_PATH REPORTS   ;# where to store synthesis reports
+set _OUTPUTS_PATH OUTPUTS               ;# where to store output files
+set _REPORTS_PATH REPORTS               ;# where to store synthesis reports
 ```
-Copy and paste these Tcl commands directly into Genus. (copy icon on top right corner of code.)  Make sure that you know what each Tcl command does.
+Copy and paste these Tcl commands directly into Genus. (Use the copy icon on top right corner of code.)  Make sure that you know what each Tcl command does.
 
 **_Step 4: Specify where the standard cell libraries can be found_**
 
@@ -187,16 +185,17 @@ set_clock_uncertainty -setup [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
 set_clock_transition -rise  50 ${CLOCK_NAME}
 set_clock_transition -fall  50 ${CLOCK_NAME}
 ```
-These clock specifications are necessary for Genus' synthesis and optimization algorithm to try meet the timing requirements.
+These clock specifications are necessary for Genus' synthesis and optimization algorithms to try meet the timing requirements.
 
 **_Step 6: Synthesis to gates_**
+
 Enter these Tcl commands in Genus:
 ```tcl
-# First to generic gates
+# First synthesize to generic gates
 set_db syn_generic_effort $GEN_EFF
 syn_generic
 
-# Then to TSMC gates
+# Then map to TSMC standard cells
 set_db syn_map_effort $MAP_OPT_EFF
 syn_map
 
@@ -204,9 +203,12 @@ write_snapshot -directory ${_REPORTS_PATH}/map -tag map
 report_dp > ${_REPORTS_PATH}/map/${DESIGN}_datapath.rpt
 report_summary -directory ${_REPORTS_PATH}
 ```
-When you copy and paste these commands to Genus, you may also want to examine the ./OUTPUTS and ./REPORTS folder to see what have been generated.
+When you copy and paste these commands to Genus, you should examine the ./OUTPUTS and ./REPORTS folder to see what have been generated.
+
+Note that you will also see a large number of warning messages.  Ignore them for now - they have no material impact on the sythesis results.
 
 **_Step 7: Optimize the netlist and write all reports and output files_**
+
 Enter these Tcl commands in Genus:
 ```tcl
 # Optimize netlist
@@ -235,11 +237,12 @@ report_gates > ${_REPORTS_PATH}/${DESIGN}_gates.rpt
 report_timing > ${_REPORTS_PATH}/${DESIGN}_timing.rpt
 report_power > ${_REPORTS_PATH}/${DESIGN}_power.rpt
 ```
-Congratulations!  You have managed to sytnesize your HDL design into gates.
+Congratulations!  You have managed to sytnesize your HDL design into gates
 
 > * Identify the synthesized circuit from the OUTPUTS directory.
 > * Examine the sytnesized Verilog file and be satisfied that it is what you expected.
-> * What are the standard cells used?
+> * What are the standard cells used, and how many?
+> * Have a look at some of the report files.
 
 **_Step 8: Finishing the synthesis task_**
 
@@ -250,25 +253,60 @@ Congratulations!  You have managed to sytnesize your HDL design into gates.
 ```tcl
 source synth.tcl
 ```
-You should produce the same result at the end of step 7.
+You should produce the same result as that afer step 7.
 
-> From now on, you just need to modify this script slightly and run the script to synthesize other new designs.
+> From now on, you can run this script after you made changes to your desing.  Further, you can use this script as template to synthesize other new designs.
 
 ---
 ### Task 3 - Place and Route the standard cells
 ---
-In this task, you will use Innovus, Cadence's place-and-route (PnR) tools, the produce the physical layout of your **_lfsr4_** design.  For PnRa, and if you are using a Mac, you must have XQuartz running.
+In this task, you will use **_Innovus_**, Cadence's place-and-route (PnR) tools, to produce the physical layout of your **_lfsr4_** design.  If you are using a Mac, you must have **_XQuartz_** running on your laptop for this to work.  For PC users, **_MobaXterm_** has the X server built-in.
 
-Place and route procedure consists of many steps.  After each step, Innovus displays the latest progress in the form of chip layout in a separate window.  To understand what each fo the PnR steps does, you are recommended to perform each step, one at a time, and record what you discover from both the layout window and from the terminal window.  This will help you debug problems when you design a complex circuit later.
+The place and route procedure consists of many steps.  After each step, *_Innovus_* displays the latest progress in the form of chip layout in a separate graphical window.  To understand what each PnR steps does, you are recommended to perform each step separately, and record what you discover from both the layout window and from the terminal window.  This will help you appreciate what each PnR step does, and how to debug problems when you design a more complex circuit later.
+
+**_Step 1: Create the MMMC (Multi-Mode, Multi-Corner) file
+
+Before we can perform PnR, we need to tell the tools the operating mode of the chip (e.g. normal or sleep) and the worst-case conditions (corners) the chip operate under (e.g. temperature, supply voltage), as well as timing constraints. This is done by specifying an **_mmmc_timing.tcl_** script.  Don't worry too much about the detail commands for now - topics of timing closure, impact of PVT (process, voltage, temperature) in VLSI design will be discuss in later lectures.
+
+Create (or copy) this file in your design folder.
+
+```tcl
+####################################################################
+## MMMC Timing Constraints Setup
+####################################################################
+# Creation of the multi-mode multi-corner analysis view for the design.
+# First load the SDC file contains the timing constraints for the design.
+# then set the timing library for the standard cells and I/O cells. There are three
+# delay corners: best, worst, and typical. The typical corner is used for functional analysis.
+# Then create the RC corner for the design, which includes the capacitance table and temperature.
+# Finally, create the delay corner constraints and the analysis view for the design.
+
+
+create_constraint_mode -name CONSTRAINTS -sdc_files ${SDC_FILE}
+create_library_set -name libs_typ -timing { \
+        "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib" \
+        "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tphn65lpnv2od3_sl_200b/tphn65lpnv2od3_sltc.lib" \
+        "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tphn65lpnv2od3_sl_200b/tphn65lpnv2od3_sltc1.lib"\
+        "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tphn65lpnv2od3_sl_200b/tphn65lpnv2od3_sltc2.lib"\
+        "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tphn65lpnv2od3_sl_200b/tphn65lpnv2od3_sltc3.lib"\
+        "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tphn65lpnv2od3_sl_200b/tphn65lpnv2od3_sltc4.lib"\
+    }
+create_rc_corner -name tsmc65_rc_corner_typ \
+            -cap_table {/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/techfiles/captable/cln65lp_1p09m+alrdl_top2_typical.captable} \
+            -T 25 
+create_delay_corner -name corner_typ -library_set {libs_typ} -rc_corner {tsmc65_rc_corner_typ}
+create_analysis_view -name {functional_typ} -delay_corner {corner_typ} -constraint_mode {CONSTRAINTS} 
+set_analysis_view -setup {functional_typ} -hold {functional_typ}
+```
 
 Launch **Innovus** by entering:
 ```bash
-innovus
+innovus 
 ```
 
-**_Step 1: Set up variables_**
+**_Step 3: Set up variables_**
 
-We first set up the relevent variables for Innovus.  The key parameters here are those that define properties of the standard cell core and the power ring sizes.
+We first set up the relevent variables for *_Innovus_*.  The key parameters here are those that define properties of the standard cell core and the power ring sizes.
 
 ```tcl
 #Top-level module name
@@ -306,6 +344,7 @@ init_design
 
 
 **_Step 2: Floor Planning_**
+
 Enter these Tcl command:
 ```tcl
 # Plan how the overall layout, particularly where power wires go
@@ -316,22 +355,23 @@ globalNetConnect VDD -type tiehi -pin VDD -all -override
 globalNetConnect VSS -type tielo -pin VSS -all -override
 
 # Add power ring
-addRing -width ${POWER_RING_WIDTH} -spacing ${POWER_RING_SPACING} -offset ${POWER_RING_OFFSET} -layer {top M1 bottom M1 
-left M2 right M2} -center 1 -nets { VSS VDD }
+addRing -width ${POWER_RING_WIDTH} -spacing ${POWER_RING_SPACING} -offset ${POWER_RING_OFFSET} -layer {top M1 bottom M1 left M2 right M2} -center 1 -nets {VSS VDD}
 
 # Special routing for power and ground nets
-sroute -nets { VSS VDD} -allowJogging true -allowLayerChange true -blockPin useLef -connect {blockPin padPin padRing corePin floatingStripe }
+sroute -nets {VSS VDD} -allowJogging true -allowLayerChange true -blockPin useLef -connect {blockPin padPin padRing corePin floatingStripe}
 
 # Insert well taps to prevent latch up
 addWellTap -cell TAPCELLBWP7T -prefix welltap -cellInterval 60 -checkerBoard
 
 timeDesign -prePlace -expandedViews -outDir ./REPORTS/prePlace -prefix prePlace
 ```
-> What is the result of this floorplanning step?
+You should see graphical information on the layout window. Use the 'f' key to fit the entire core onto the window.
+
+> What is the result of this floorplanning step?  What are *_well taps_* and why are they needed?
 
 **_Step 3: Placement_**
 
-This step places the standard cells specified in the synthesized netlist sucn that various constraints such as aspect ratio and how much of the core area is used up are met.  This step also perform preliminary check on timing constraints sepcified earlier based on the timing properties of the standard cells used.
+This step places the standard cells specified in the synthesized netlist such that various constraints such as aspect ratio and how much of the core area is used up are met.  This step also performs preliminary check on timing constraints specified earlier based on the timing properties of the standard cells used.
 
 ```tcl
 # Placement 
@@ -345,7 +385,7 @@ timeDesign -preCTS -outDir REPORTS/preCTS -prefix preCTS
 
 **_Step 4: Clock tree insertion_**
 
-To meet the timing requirements of a synchronous circuit, a well designed clock tree circuit is vital.  Details of clock tree design will be covered in a later lecture.  Innovus provides an automatic clock tree insertion tool. Routing and buffer sizing of the clock tree is done before the finally routing.  This is achieve by the following.
+To meet the timing requirements of a synchronous circuit, a well designed clock tree circuit is vital.  Details of clock tree design will be covered in a later lecture.  *_Innovus_* provides a clock tree synthesis (CTS) tool. Routing and buffer sizing of the clock tree is done before the finally routing.  This is achieved by the following.
 
 ```tcl
 set_ccopt_property buffer_cells {CKBD0BWP7T CKBD1BWP7T CKBD2BWP7T CKBD3BWP7T CKBD4BWP7T CKBD6BWP7T CKBD8BWP7T CKBD10BWP7T CKBD12BWP7T}
@@ -377,25 +417,29 @@ Congratulations!  You should now see the completed layout of the lfsr4 circuit a
 
 <p align="center"> <img src="diagrams/lfsr4_layout.jpg" /> </p><BR>
 
-> Compare the circuit produced by Genus after synthesize to that produced by Innovus after PnR.  Comment on how PnR optimization has modified the original circuit.
-> Examine what files are generated by Innovus in the OUTPUTS and REPORTS folders.
+> Compare the circuit produced by *_Genus_* after synthesize to that produced by *_Innovus_* after PnR.  Comment on how PnR has modified the original circuit.
+> Examine what files are generated by *_Innovus_* in the OUTPUTS and REPORTS folders.
 
 Again, you should combine the Tcl scripts for all the PnR steps as a single PnR.tcl file.
-Exit from Innovus and launch this again so that you flush out all internal state of the program.  Relaunch Innovus and run the entire PnR process by:
+
+Exit from *_Innovus_* and launch this again so that you flush out all internal states of the tool.  
+
+Relaunch *_Innovus_* and run the entire PnR process by:
+
 ```tcl
 source PnR.tcl
 ```
-Both synth.tcl and PnR.tcl scripts will now serve as template for your future design.
+Both synth.tcl and PnR.tcl scripts will now serve as templates for your future designs.
 
 ---
 ### Task 4 - Simulation
 ---
 
-The place and routed result will now be simulated to make sure that the layout version of the circuit is working as expected using Cadence's XCelium simulator.  
+The place and routed circuit will now be simulated to make sure that the layout version of the circuit is working as expected using Cadence's XCelium simulator.  
 
 **_Step 1: Create the testbench _**
 
-To do this, we must first provide a testbench.  Create in SRC folder the file **_lfsr4_tb.sv_** which contains:
+Before you start the simulation, you must first provide a testbench.  Create in *_./SRC_* folder the file **_lfsr4_tb.sv_** which contains:
 
 ```v
 `timescale 1ns/1ps
@@ -432,11 +476,11 @@ module lfsr4_tb;
     end
 endmodule
 ```
->Note that the first line specifies the time unit and resolution.  This timescale statement must also be manually edited into all the layout Verilog file generated by PnR.  In this case, the file is **_./OUTPUT/lfsr4.layout.v_-_**.
+>Note that the first line specifies the time unit and resolution.  This timescale statement must also be manually edited into all the layout Verilog file generated by PnR.  In this case, the file is **_./OUTPUT/lfsr4.soc.v_-_**.
 
 **_Step 2: Create a Makefile to run the simulator_**
 
-Create at the Lab_1 directory a Makefile with the follow:
+Create in the Lab_1 directory a Makefile with the follow:
 
 ```make
 # Directory definitions
@@ -447,12 +491,12 @@ WAVE_DIR = ./waves
 
 # File definitions
 TESTBENCH = SRC/lfsr4_tb.sv
-DUT_SRCS = OUTPUTS/lfsr4_layout.v
+DUT_SRCS = OUTPUTS/lfsr4_soc.v
 
 # Run simulation with SDF annotation
 run: 
-	xmverilog $(LIB_DIR)
-	xmverilog -sv $(DUT_SRCS) $(TESTBENCH) +sdf_verbose +access+rwc
+	ncverilog $(LIB_DIR)
+	ncverilog -sv $(DUT_SRCS) $(TESTBENCH) +sdf_verbose +access+rwc
 
 # View waveforms (assuming .trn or .shm output)
 waves:
@@ -468,9 +512,9 @@ clean:
 **_Step 3: Generate simulation output and view waveforms_**
 
 Make sure that you have the following in place:
-* the testbench file lfsr4_tb.sv is in ./SRC
-* the layout Verilog file lfsr4_layout.v has the timescale statement added
-* the Makefile available in your design folder 
+* the testbench file lfsr4_tb.sv is in ./SRC;
+* the PnR Verilog file lfsr4_soc.v has the timescale statement added;
+* the Makefile available in your design folder.
 
 Then enter:
 ```bash
@@ -480,7 +524,9 @@ make run
 make waves
 ```
 
-You should see the signal waveforms of the simple "chip" you have created as shown in the diagram below.
+A GTKwave window will appear.  Clicking on the module and signal names on the left will insert waveforms in the waveform pane. You should see the signal waveforms of the simple "chip" you have created as shown in the diagram below. 
+
+> Use <CRTL_0>, <CRTL_+> and <CTRL_-> keys to fit whole waveform, zoom in and zoom out respectively.
 
 <p align="center"> <img src="diagrams/lfsr4_waveforms.jpg" /> </p><BR>
 
