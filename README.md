@@ -1,4 +1,4 @@
-##### Department of Electrical & Electronic Engineering, Imperial College London
+##### Imperial College London, Department of Electrical & Electronic Engineering
 
 
 #### ELEC70142 Digital VLSI Design
