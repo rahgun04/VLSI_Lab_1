@@ -544,7 +544,7 @@ A 16-bit signature analyzer circuit is shown below.  You can easily modify the *
 <p align="center"> <img src="diagrams/16-bit_signature_analyzer.jpg" width="640" height="250"> </p> <BR>
 
 ---
-### File Formats used in this Lab
+### File formats used in this Lab
 ---
 
 **LEF (Library Exchange Format)** 
