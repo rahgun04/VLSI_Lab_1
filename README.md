@@ -156,6 +156,7 @@ set_db use_tiehilo_for_const duplicate;
 ```
 
 **_Step 5: Load the design and specify the clock signal & constraints_**
+
 Enter these Tcl commands in Genus:
 
 ```tcl
