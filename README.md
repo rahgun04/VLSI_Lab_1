@@ -264,7 +264,7 @@ In this task, you will use **_Innovus_**, Cadence's place-and-route (PnR) tools,
 
 The place and route procedure consists of many steps.  After each step, *_Innovus_* displays the latest progress in the form of chip layout in a separate graphical window.  To understand what each PnR steps does, you are recommended to perform each step separately, and record what you discover from both the layout window and from the terminal window.  This will help you appreciate what each PnR step does, and how to debug problems when you design a more complex circuit later.
 
-**_Step 1: Create the MMMC (Multi-Mode, Multi-Corner) file
+**_Step 1: Create the MMMC (Multi-Mode, Multi-Corner) file_**
 
 Before we can perform PnR, we need to tell the tools the operating mode of the chip (e.g. normal or sleep) and the worst-case conditions (corners) the chip operate under (e.g. temperature, supply voltage), as well as timing constraints. This is done by specifying an **_mmmc_timing.tcl_** script.  Don't worry too much about the detail commands for now - topics of timing closure, impact of PVT (process, voltage, temperature) in VLSI design will be discuss in later lectures.
 
