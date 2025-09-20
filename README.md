@@ -85,7 +85,7 @@ endmodule
 ```
 
 ---
-### Task 2 - Sythesise RTL to Standard Cells
+### Task 2 - Sythesize RTL to Standard Cells
 ---
 
 **_Step 1: Specify the PDK for your design_**
