@@ -28,7 +28,7 @@ By the end of this laboratory session, you should be able to do the following.
 
 >Before you even start this laboratory session, you must have signed the TSMC's **non-disclosure agreement (NDA)**, and have returned this to me.  Remember that you MUST abide by the restrictions stipulated in the NDA.
 
-Although you could use the PCs provided by the Department in Room 507 for this lab, I recommend that you  bring your own laptop.  There are many displays units in the room for your to plug in your laptop and use a larger screen for this lab. You will be working in pairs. 
+Although you could use the PCs provided by the Department in Room 507 for this lab, I recommend that you  bring your own laptop.  There are many displays units in the room for you to plug in your laptop and use a larger screen for this lab. You will be working in pairs. 
 
 If you are using a Windows PC, you will need to have [MobaXterm]([https://mobaxterm.mobatek.net) installed. This provides a feature-rich terminal environment with built-in X server and ssh client.
 
