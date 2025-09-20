@@ -165,6 +165,10 @@ elaborate ${DESIGN}
 check_design -unresolved
 check_design -unloaded
 
+# Set time units for SDC commands to be consistent with Genus commands
+set_time_unit -picoseconds
+set_load_unit -femtofarads
+
 # Tell Genus about the clock signal
 create_clock -domain domain1 -name ${CLOCK_NAME} -period ${CLOCK_PERIOD_ps} [get_db ports ${CLOCK_NAME}]
 set_db clock:${DESIGN}/${CLOCK_NAME} .setup_uncertainty [expr 0.02 * ${CLOCK_PERIOD_ps}]
@@ -172,10 +176,6 @@ set_clock_uncertainty -hold  [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
 set_clock_uncertainty -setup [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME} 
 set_clock_transition -rise  50 ${CLOCK_NAME}
 set_clock_transition -fall  50 ${CLOCK_NAME}
-
-# Set time units for SDC commands to be consistent with Genus commands
-set_time_unit -picoseconds
-set_load_unit -femtofarads
 
 # Define the system clock constraints
 create_clock -domain domain1 -name ${CLOCK_NAME} -period ${CLOCK_PERIOD_ps} [get_db ports ${CLOCK_NAME}]
@@ -388,15 +388,23 @@ timeDesign -preCTS -outDir REPORTS/preCTS -prefix preCTS
 To meet the timing requirements of a synchronous circuit, a well designed clock tree circuit is vital.  Details of clock tree design will be covered in a later lecture.  *_Innovus_* provides a clock tree synthesis (CTS) tool. Routing and buffer sizing of the clock tree is done before the finally routing.  This is achieved by the following.
 
 ```tcl
+# specify clock properties
 set_ccopt_property buffer_cells {CKBD0BWP7T CKBD1BWP7T CKBD2BWP7T CKBD3BWP7T CKBD4BWP7T CKBD6BWP7T CKBD8BWP7T CKBD10BWP7T CKBD12BWP7T}
 set_ccopt_property inverter_cells {CKND0BWP7T CKND1BWP7T CKND2BWP7T CKND3BWP7T CKND4BWP7T CKND6BWP7T CKND8BWP7T CKND10BWP7T CKND12BWP7T}
+set_ccopt_property target_max_trans 130ps
+set_ccopt_property target_skew 200ps
+set_ccopt_property max_fanout 20
+
 setOptMode -usefulSkew true
 setOptMode -usefulSkewCCOpt extreme
+
+# clock tree synthesis (CTS)
 create_ccopt_clock_tree_spec -file REPORTS/ctsspec.tcl
 source REPORTS/ctsspec.tcl
 ccopt_design -check_prerequisites
 ccopt_design
 
+# post clock tree sythesis optimization
 optDesign -postCTS -setup -hold -outDir REPORTS/postCTSOptTiming
 timeDesign -postCTS -expandedViews -outDir REPORTS/postCTS -prefix postCTS
 report_ccopt_clock_trees -file REPORTS/postCTS/clock_trees.rpt
@@ -412,7 +420,38 @@ setAnalysisMode -analysisType onChipVariation -skew true -clockPropagation sdcCo
 optDesign -postRoute -setup
 optDesign -postRoute -hold
 ```
+**_Step 6: Finishing  up_**
 
+```tcl
+# Add filler cells to fill gaps 
+addFiller -cell {FILL1BWP7T FILL2BWP7T FILL4BWP7T FILL8BWP7T FILL16BWP7T FILL32BWP7T FILL64BWP7T} -doDRC
+
+# perform basic DRC and LVS
+verifyConnectivity
+verify_drc -limit 100000
+timeDesign -postRoute -expandedViews -outDir REPORTS/postRoute -prefix postRoute
+
+## Saving the design
+saveDesign ./SAVES/${DESIGN}_done.enc
+
+# Export Design
+
+## Export final netlist to Verilog format
+saveNetlist OUTPUTS/[format "%s_soc.v" $DESIGN]
+
+## Export delay information to SDF format
+write_sdf OUTPUTS/${DESIGN}.sdf 
+
+## Exporting the design to LEF format
+write_lef_abstract OUTPUTS/${DESIGN}.lef -stripePin
+
+# Builds a Liberty (.lib) format model for the top cell, which is the timing model
+do_extract_model OUTPUTS/${DESIGN}.lib  -view functional_typ
+
+## Export parasitics to SPEF format
+extractRC -outfile ${DESIGN}.cap
+rcOut -spef OUTPUTS/${DESIGN}.spef
+```
 Congratulations!  You should now see the completed layout of the lfsr4 circuit as shown below.  
 
 <p align="center"> <img src="diagrams/lfsr4_layout.jpg" width="600" height="600"> </p><BR>
