@@ -5,7 +5,7 @@
 
 ### Lab 1 - A Quick Start with Cadence
 
-##### *Peter Cheung, v0.2 - 2 October 2025*
+##### *Peter Cheung, v1.0 - 2 October 2025*
 
 ---
 ### Objectives
@@ -30,7 +30,7 @@ By the end of this laboratory session, you should be able to do the following.
 
 Although you could use the PCs provided by the Department in Room 507 for this lab, I recommend that you  bring your own laptop.  There are many displays units in the room for you to plug in your laptop and use a larger screen for this lab. You will be working in pairs. 
 
-If you are using a Windows PC, you will need to have [MobaXterm]([https://mobaxterm.mobatek.net) installed. This provides a feature-rich terminal environment with built-in X server and ssh client.
+If you are using a Windows PC, you will need to have [MobaXterm](https://mobaxterm.mobatek.net) installed via College's [software hub](https://softwarehub.imperial.ac.uk). This provides a feature-rich terminal environment with built-in X server and ssh client.
 
 If you are a MacBook user, you already have the Terminal applicatio as part of OSX. You also need to install [XQuartz](https://www.xquartz.org) X server to run Cadence.
 
@@ -38,7 +38,7 @@ If you are a MacBook user, you already have the Terminal applicatio as part of O
 ### Task 1 - Connect to the Teaching Server
 ---
 
-To access Imperial College's resources from your personal laptop, you will need to connect to the Universal Access provision after running [Zscaler](https://uafiles.cc.ic.ac.uk/). After authentication, you will be able to access file systems and computer servers.
+To access Imperial College's resources from your personal laptop when you are not in College, you will need to connect to the Universal Access provision after running [Zscaler](https://uafiles.cc.ic.ac.uk/). After authentication, you will be able to access file systems and computer servers.
 
 Cadence is installed and runs on the EEE teaching servers, which you access via SSH. There are two
  servers available:
@@ -470,6 +470,13 @@ Relaunch *_Innovus_* and run the entire PnR process by:
 source PnR.tcl
 ```
 Both synth.tcl and PnR.tcl scripts will now serve as templates for your future designs.
+
+**_Step 8: Changing Aspect Ratio of Standard Cells_**
+
+Change the line in the *_PnR.tcl_* script that specifies the aspect ratio of this block from 1.0 to 0.1.  Run the script again and observe the resulting layout.
+
+> Discuss with your lab partner the different layout now as compared to the previous layout after Step 7.
+> What can you do to minimize the size taken by this circuit?
 
 ---
 ### Task 4 - Simulation
