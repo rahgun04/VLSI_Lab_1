@@ -479,7 +479,7 @@ source PnR.tcl
 ```
 Both synth.tcl and PnR.tcl scripts will now serve as templates for your future designs.
 
-**_Step 8: Changing Aspect Ratio of Standard Cells_**
+**_Step 8: Changing aspect ratio of the core_**
 
 Change the line in the *_PnR.tcl_* script that specifies the aspect ratio of this block from 1.0 to 0.1.  Run the script again and observe the resulting layout.
 
