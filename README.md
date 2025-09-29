@@ -12,10 +12,10 @@
 ---
 By the end of this laboratory session, you should be able to do the following.
 * Set up your personal laptop environment for **Cadence EDA software** running on our teaching servers.
-* Use **_Genus_** EDA package to synthesize a simple circuit from **HDL to standard cells**.
+* Use **_Genus_** tool package to synthesize a simple circuit from **HDL to standard cells**.
 * Understand the **steps required** to take a RTL specification to silicon using standard cells. 
 * Interpret the **timing** and **size estimates** reported by *Genus*.
-* Use **_Innovus_** EDA package to **place and route** the synthesized circuit. 
+* Use **_Innovus_** tool package to **place and route** the synthesized circuit. 
 * Understand how to write a **Tcl script** to perform synthesis and place-and-route.
 * Perform basic **Design Rule Check** (DRC) and **layout verification check** (LVS) on the circuit.
 * Use **_Xcelium_** simulator to **verify** that synthesised and place-and-routed circuit works.
@@ -33,6 +33,10 @@ Although you could use the PCs provided by the Department in Room 507 for this l
 If you are using a Windows PC, you will need to have [MobaXterm](https://mobaxterm.mobatek.net) installed via College's [software hub](https://softwarehub.imperial.ac.uk). This provides a feature-rich terminal environment with built-in X server and ssh client.
 
 If you are a MacBook user, you already have the Terminal applicatio as part of OSX. You also need to install [XQuartz](https://www.xquartz.org) X server to run Cadence.
+
+You may also want to clone this repo onto your own laptop, so that you have a local copy of the instruction and related files.  As part of the assessment, you are expected to keep and show your logbook to your assessor during the mid-term Lab Oral.  You may keep your logbook using any application you wish, e.g. MS WORD, MS OneNote, Obsidian or Notion.  However, one possible choice is to keep your logbook with your cloned repo.
+
+If you are EE4 students, you may not have extensive exposure to Github and Markdown language.  I am afraid you will have to learn these skills taking this module.  Your final project submission will have to be in the form of Github repo. In any case, all EEE graduates should be familiar with these skills.
 
 ---
 ### Task 1 - Connect to the Teaching Server
@@ -56,13 +60,13 @@ or
 ```bash
 ssh -Y <username>@ee-mill2.ee.ic.ac.uk
 ```
-Once you have logon, create your directory structure for this module's coursework, e.g. Lab_1, Lab_2 etc..   Within Lab_1, create the following folders to store the various types of files created or generated for this lab:
+Once you have logon, create your directory structure for this module's coursework, e.g. LAB_1, LAB_2 etc..   Within LAB_1, create the following folders to store the various types of files created or generated for this lab:
 * **SRC** - where you put the HDL sources
-* **OUTPUTS** - where all generated files from sythesis are stored
+* **OUTPUTS** - where all generated files from synthesis are stored
 * **REPORTS** - where all reports are stored
 * **SAVES** - where incomplete designs are saved for incremental development
   
-Using your favourite editor, create the following SystemVerilog HDL source *_lfsr4.sv_* in the **SRC** folder. This is a 4-bit linear feedback register used in 2nd year labs.
+Using your favourite editor, create the following SystemVerilog HDL source *_lfsr4.sv_* in the **SRC** folder. This is a 4-bit linear feedback register used in the 2nd year labs.
 
 ```v
 module lfsr4 (
@@ -83,6 +87,7 @@ module lfsr4 (
   assign data_out = sreg;
 endmodule 
 ```
+<p align="center"> <img src="diagrams/lfsr4.jpg" width="600" height="230"> </p><BR>
 
 ---
 ### Task 2 - Sythesize RTL to Standard Cells
@@ -105,9 +110,9 @@ pdk tsmc65LP
 > 
 **_Step 2: Launching the Genus tool_**
 
-Cadence Genus tool synthesizes your RTL specification in SystemVerilog into optimized gate-level netlist. The output is a Verilog specifications of gates (in our case, standard cells) which can be implemented as silicon layout through a placement and routing process later (called PnR).
+Cadence Genus tool synthesizes your RTL specification in SystemVerilog into optimized gate-level netlist. The output is netlist of gates (in our case, standard cells) in Verilog, which can be implemented as silicon layout through a placement and routing process later (called **_PnR_**).
 
-Launch Genus by typing:
+Launch **_Genus_** by typing:
 ```bash
 genus
 ```
