@@ -50,6 +50,8 @@ Cadence is installed and runs on the EEE teaching servers, which you access via 
 * ee-mill1.ee.ic.ac.uk
 * ee-mill2.ee.ic.ac.uk
 
+To balance the loading on these two servers, please use **_ee-mill1_** if your group number is **odd**, and **_ee-mill2_** if it is **even**.  A list of groups can be found [here](group_allocation.txt).
+
 For **Windows**: Use [MobaXterm]([https://mobaxterm.mobatek.net) to create a new session by entering the server address with your username and password.
 
 For **Mac**: Use [XQuartz](https://www.xquartz.org). After installation and opening XQuartz, enter:
@@ -60,7 +62,7 @@ or
 ```bash
 ssh -Y <username>@ee-mill2.ee.ic.ac.uk
 ```
-Once you have logon, create your directory structure for this module's coursework, e.g. LAB_1, LAB_2 etc..   Within LAB_1, create the following folders to store the various types of files created or generated for this lab:
+Once you have logon, create a folder for this lab, e.g. LAB_1.  Within LAB_1, create the following folders to store the various types of files created or generated for this lab:
 * **SRC** - where you put the HDL sources
 * **OUTPUTS** - where all generated files from synthesis are stored
 * **REPORTS** - where all reports are stored
