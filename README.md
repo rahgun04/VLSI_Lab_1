@@ -50,7 +50,7 @@ Cadence is installed and runs on the EEE teaching servers, which you access via 
 * ee-mill1.ee.ic.ac.uk
 * ee-mill2.ee.ic.ac.uk
 
-To balance the loading on these two servers, please use **_ee-mill1_** if your group number is **odd**, and **_ee-mill2_** if it is **even**.  A list of groups can be found [here](group_allocation.txt).
+To balance the loading on these two servers, please use **_ee-mill1_** if your group number is **odd**, and **_ee-mill2_** if it is **even**.  A list of groups can be found [here](group_allocation.md).
 
 For **Windows**: Use [MobaXterm]([https://mobaxterm.mobatek.net) to create a new session by entering the server address with your username and password.
 
