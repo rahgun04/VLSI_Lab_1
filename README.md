@@ -91,6 +91,13 @@ endmodule
 ```
 <p align="center"> <img src="diagrams/lfsr4.jpg" width="600" height="230"> </p><BR>
 
+>College has remove the ability to use Network File System (NFS) and autosynch your files. One way to create the SystemVerilog source is to edit your code using VSCode on your laptop and copy this across to the teaching server file system. 
+ 
+>To transfer a file from your laptop to the remote teaching server, use the following secure copy command:
+```bash
+scp lfsr4.sv <user_name>@ee-mill1.ee.ic.ac.uk:/VLSI/LAB_1/SRC/.
+```
+
 ---
 ### Task 2 - Sythesize RTL to Standard Cells
 ---
