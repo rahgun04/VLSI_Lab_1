@@ -191,14 +191,6 @@ set_clock_uncertainty -hold  [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
 set_clock_uncertainty -setup [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME} 
 set_clock_transition -rise  50 ${CLOCK_NAME}
 set_clock_transition -fall  50 ${CLOCK_NAME}
-
-# Define the system clock constraints
-create_clock -domain domain1 -name ${CLOCK_NAME} -period ${CLOCK_PERIOD_ps} [get_db ports ${CLOCK_NAME}]
-set_db clock:${DESIGN}/${CLOCK_NAME} .setup_uncertainty [expr 0.02 * ${CLOCK_PERIOD_ps}]
-set_clock_uncertainty -hold  [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME} 
-set_clock_uncertainty -setup [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME} 
-set_clock_transition -rise  50 ${CLOCK_NAME}
-set_clock_transition -fall  50 ${CLOCK_NAME}
 ```
 These clock specifications are necessary for Genus' synthesis and optimization algorithms to try meet the timing requirements.
 
