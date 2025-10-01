@@ -5,7 +5,7 @@
 
 ### Lab 1 - A Quick Start with Cadence
 
-##### *Peter Cheung, v1.0 - 2 October 2025*
+##### *Peter Cheung, v1.1 - 2 October 2025*
 
 ---
 ### Objectives
@@ -92,10 +92,10 @@ endmodule
 <p align="center"> <img src="diagrams/lfsr4.jpg" width="600" height="230"> </p><BR>
 
 >College has remove the ability to use Network File System (NFS) and autosynch your files. One way to create the SystemVerilog source is to edit your code using VSCode on your laptop and copy this across to the teaching server file system. 
- 
+
 >To transfer a file from your laptop to the remote teaching server, use the following secure copy command:
 ```bash
-scp lfsr4.sv <user_name>@ee-mill1.ee.ic.ac.uk:/VLSI/LAB_1/SRC/.
+scp lfsr4.sv <user_name>@ee-mill1.ee.ic.ac.uk:<lab_1_folder>/SRC/.
 ```
 
 ---
@@ -141,8 +141,8 @@ Enter these Tcl commands in Genus:
 ```tcl
 # Variable setup
 set _HDL_DIRECTORY ./SRC
-set HDL_FILES [list lfsr4.sv]           ;* list of sources
-set DESIGN lfsr4                        ;* top-level module name
+set HDL_FILES [list lfsr4.sv]           ;# list of sources
+set DESIGN lfsr4                        ;# top-level module name
 
 # Clock name should match the clock signal name in HDL (i.e. clk, CLK, ...)
 set CLOCK_NAME clk
@@ -165,7 +165,7 @@ set_db init_hdl_search_path $_HDL_DIRECTORY;
 set_db library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib";
 set_db lef_library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef";
 set_db cap_table_file "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/techfiles/captable/cln65lp_1p09m+alrdl_top2_rcworst.captable";
-set_db information_level 4;       # Output verbosity level - 1 (default) to 11
+set_db information_level 4            ;# Output verbosity level - 1 (default) to 11
 set_db use_tiehilo_for_const duplicate;
 ```
 
@@ -337,8 +337,8 @@ set COREGAP 5                                     ;# gap from power ring to core
 # Set Power Ring parameters (in um)
 # The power ring is a rectangular area around the core that provides power and ground connections.
 set POWER_RING_WIDTH 1                            ;# width of wire
-set POWER_RING_SPACING 0.5                         ;# spacing between wires
-set POWER_RING_OFFSET 0.5                          ;# distance from core boundary
+set POWER_RING_SPACING 0.5                        ;# spacing between wires
+set POWER_RING_OFFSET 0.5                         ;# distance from core boundary
 
 # Setup PnR environment and say where library can be found
 set init_verilog ${VERILOG_FILES}
