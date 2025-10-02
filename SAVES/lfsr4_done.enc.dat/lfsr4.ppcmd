@@ -1,0 +1,44 @@
+# PPCMD 1 
+# sroute -nets {VSS VDD} -allowJogging true -allowLayerChange true -blockPin useLef -connect {blockPin padPin padRing corePin floatingStripe}
+# 2 
+# 16 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 1 
+
+# PPCMD 2 
+# addRing -width 1 -spacing 0.5 -offset 0.5 -layer {top M1 bottom M1 left M2 right M2} -center 1 -nets {VSS VDD}
+# 1 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VDD 2000 1 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 17400 3500 17400 30500 
+# END_RING_PT_INFO_LIST 
+# VDD 2000 2 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 3500 17000 31300 17000 
+# END_RING_PT_INFO_LIST 
+# VSS 2000 1 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 17400 6500 17400 27500 
+# END_RING_PT_INFO_LIST 
+# VSS 2000 2 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 6500 17000 28300 17000 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 2 
+

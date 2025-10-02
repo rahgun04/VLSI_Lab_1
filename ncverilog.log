@@ -1,0 +1,49 @@
+ncverilog(64): 15.20-s058: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
+TOOL:	ncverilog	15.20-s058: Started on Oct 02, 2025 at 16:54:03 BST
+ncverilog
+	-sv
+	OUTPUTS/lfsr4_soc.v
+	SRC/lfsr4_tb.sv
+	+sdf_verbose
+	+access+rwc
+file: OUTPUTS/lfsr4_soc.v
+	module worklib.lfsr4:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+ncelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.CKXOR2D0BWP7T:v <0x0869373b>
+			streams:   0, words:     0
+		worklib.DFCNQD1BWP7T:v <0x4738887d>
+			streams:   0, words:     0
+		worklib.DFSNQD1BWP7T:v <0x60704e0c>
+			streams:   0, words:     0
+		worklib.lfsr4_tb:sv <0x6ffd394a>
+			streams:   5, words:  3970
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 9       7
+		UDPs:                   12       2
+		Primitives:             23       4
+		Timing outputs:          7       4
+		Registers:               8       7
+		Scalar wires:           17       -
+		Expanded wires:          4       1
+		Initial blocks:          2       2
+		Pseudo assignments:      3       3
+		Timing checks:          36       -
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.lfsr4_tb:sv
+Loading snapshot worklib.lfsr4_tb:sv .................... Done
+ncsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+ncsim> source /usr/local/cadence/INCISIVE_15.20.058/tools/inca/files/ncsimrc
+ncsim> run
+Start lfsr4 testbench ....
+ncsim: *W,RNQUIE: Simulation is complete.
+ncsim> exit
+TOOL:	ncverilog	15.20-s058: Exiting on Oct 02, 2025 at 16:54:04 BST  (total: 00:00:01)

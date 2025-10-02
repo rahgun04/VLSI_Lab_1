@@ -1,0 +1,154 @@
+######################################################################
+
+# Created by Genus(TM) Synthesis Solution 18.10-p003_1 on Thu Oct 02 15:30:02 BST 2025
+
+# This file contains the RC script for design:lfsr4
+
+######################################################################
+
+if {! [is_attribute wlec_internal_to_write_lec_db_for_invocation -obj_type root]} {define_attribute -obj_type root -category lec -data_type string -help_string {Capture internal write_lec variables.} wlec_internal_to_write_lec_db_for_invocation}
+if {! [is_attribute wlec_internal_to_write_lec_db_for_label -obj_type root]} {define_attribute -obj_type root -category lec -data_type string -help_string {Capture internal write_lec variables.} wlec_internal_to_write_lec_db_for_label}
+if {! [is_attribute wlec_internal_to_write_lec_label_data -obj_type root]} {define_attribute -obj_type root -category lec -data_type string -help_string {Capture internal write_lec variables.} wlec_internal_to_write_lec_label_data}
+set_db -quiet information_level 4
+set_db -quiet design_mode_process 90.0
+set_db -quiet phys_assume_met_fill 0.0
+set_db -quiet map_placed_for_hum false
+set_db -quiet phys_use_invs_extraction true
+set_db -quiet phys_route_time_out 120.0
+set_db -quiet capacitance_per_unit_length_mmmc {}
+set_db -quiet resistance_per_unit_length_mmmc {}
+set_db -quiet runtime_by_stage {{PBS_Generic-Start 0 35 0.0 11.0} {to_generic 0 35 0 11} {first_condense 0 35 0 11} {PBS_Generic_Opt-Post 0 35 -0.001160000000000494 10.99884} {{PBS_Generic-Postgen HBO Optimizations} 0 35 0.0 10.99884} {PBS_TechMap-Start 0 35 0.0 10.99884} {{PBS_TechMap-Premap HBO Optimizations} 0 35 0.0 10.99884} {first_condense 1 36 0 11} {reify 0 36 0 11} {global_incr_map 0 36 0 11} {{PBS_Techmap-Global Mapping} 1 36 0.9974120000000006 11.996252} {{PBS_TechMap-Datapath Postmap Operations} 0 36 0.0 11.996252} {{PBS_TechMap-Postmap HBO Optimizations} 0 36 0.0 11.996252} {{PBS_TechMap-Postmap Clock Gating} 0 36 0.0 11.996252} {{PBS_TechMap-Postmap Cleanup} 0 36 0.0 11.996252} {PBS_Techmap-Post_MBCI 0 36 0.0 11.996252} {incr_opt 1 37 0 12} }
+set_db -quiet tinfo_tstamp_file .rs_rg1322.tstamp
+set_db -quiet metric_enable true
+set_db -quiet metric_page_cfg {}
+set_db -quiet use_area_from_lef true
+set_db -quiet use_tiehilo_for_const duplicate
+set_db -quiet flow_metrics_snapshot_uuid c48825b8-a09c-4287-b734-ddefcc2a9a3a
+set_db -quiet compensative_dpul_driver 0
+set_db -quiet phys_use_segment_parasitics true
+set_db -quiet probabilistic_extraction true
+set_db -quiet ple_correlation_factors {1.9000 2.0000}
+set_db -quiet maximum_interval_of_vias inf
+set_db -quiet layer_aware_buffer true
+set_db -quiet ple_mode global
+set_db -quiet wireload_selection wireload_selection:default_emulate_libset_max/tcbn65lpbwp7twc/WireAreaForZero
+set_db -quiet operating_condition:default_emulate_libset_max/tcbn65lpbwp7twc/WCCOM .tree_type balanced_tree
+set_db -quiet operating_condition:default_emulate_libset_max/tcbn65lpbwp7twc/_nominal_ .tree_type balanced_tree
+# BEGIN MSV SECTION
+# END MSV SECTION
+define_clock -name clk -domain domain1 -period 1000.0 -divide_period 1 -rise 0 -divide_rise 1 -fall 1 -divide_fall 2 -remove -design design:lfsr4 port:lfsr4/clk
+set_db -quiet clock:lfsr4/clk .slew {50.0 50.0 50.0 50.0}
+set_db -quiet clock:lfsr4/clk .clock_setup_uncertainty {20.0 20.0}
+set_db -quiet clock:lfsr4/clk .clock_hold_uncertainty {20.0 20.0}
+define_cost_group -design design:lfsr4 -name clk
+external_delay -accumulate -input {0.0 no_value 0.0 no_value} -clock clock:lfsr4/clk -name create_clock_delay_domain1_clk_R_0 port:lfsr4/clk
+set_db -quiet external_delay:lfsr4/create_clock_delay_domain1_clk_R_0 .clock_network_latency_included true
+external_delay -accumulate -input {no_value 0.0 no_value 0.0} -clock clock:lfsr4/clk -edge_fall -name create_clock_delay_domain1_clk_F_0 port:lfsr4/clk
+set_db -quiet external_delay:lfsr4/create_clock_delay_domain1_clk_F_0 .clock_network_latency_included true
+path_group -paths [specify_paths -to clock:lfsr4/clk]  -name clk -group cost_group:lfsr4/clk -user_priority -1047552
+# BEGIN DFT SECTION
+set_db -quiet dft_scan_style muxed_scan
+set_db -quiet dft_scanbit_waveform_analysis false
+# END DFT SECTION
+set_db -quiet design:lfsr4 .qos_by_stage {{to_generic {wns -11111111} {tns -111111111} {vep -111111111} {area 30} {cell_count 5} {utilization  0.00} {runtime 0 35 0 11} }{first_condense {wns -11111111} {tns -111111111} {vep -111111111} {area 34} {cell_count 7} {utilization  0.00} {runtime 0 35 0 11} }{first_condense {wns -11111111} {tns -111111111} {vep -111111111} {area 34} {cell_count 7} {utilization  0.00} {runtime 1 36 0 11} }{reify {wns 303} {tns 0} {vep 0} {area 30} {cell_count 6} {utilization  0.00} {runtime 0 36 0 11} }{global_incr_map {wns 305} {tns 0} {vep 0} {area 30} {cell_count 6} {utilization  0.00} {runtime 0 36 0 11} }{incr_opt {wns 214748365} {tns 0} {vep 0} {area 30} {cell_count 6} {utilization  0.00} {runtime 1 37 0 12} }}
+set_db -quiet design:lfsr4 .seq_mbci_coverage 0.0
+set_db -quiet design:lfsr4 .hdl_filelist {{default -sv {SYNTHESIS} {SRC/lfsr4.sv} {./SRC} {}}}
+set_db -quiet design:lfsr4 .hdl_user_name lfsr4
+set_db -quiet design:lfsr4 .verification_directory fv/lfsr4
+set_db -quiet port:lfsr4/clk .original_name clk
+set_db -quiet port:lfsr4/rst .original_name rst
+set_db -quiet {port:lfsr4/data_out[3]} .original_name {data_out[3]}
+set_db -quiet {port:lfsr4/data_out[2]} .original_name {data_out[2]}
+set_db -quiet {port:lfsr4/data_out[1]} .original_name {data_out[1]}
+set_db -quiet {port:lfsr4/data_out[0]} .original_name {data_out[0]}
+set_db -quiet {inst:lfsr4/sreg_reg[1]} .original_name {{sreg[1]}}
+set_db -quiet {inst:lfsr4/sreg_reg[1]} .orig_hdl_instantiated false
+set_db -quiet {inst:lfsr4/sreg_reg[1]} .single_bit_orig_name {sreg[1]}
+set_db -quiet {inst:lfsr4/sreg_reg[1]} .gint_phase_inversion false
+set_db -quiet {pin:lfsr4/sreg_reg[1]/Q} .original_name {sreg[1]/q}
+set_db -quiet {inst:lfsr4/sreg_reg[4]} .original_name {{sreg[4]}}
+set_db -quiet {inst:lfsr4/sreg_reg[4]} .orig_hdl_instantiated false
+set_db -quiet {inst:lfsr4/sreg_reg[4]} .single_bit_orig_name {sreg[4]}
+set_db -quiet {inst:lfsr4/sreg_reg[4]} .gint_phase_inversion false
+set_db -quiet {pin:lfsr4/sreg_reg[4]/Q} .original_name {sreg[4]/q}
+set_db -quiet {inst:lfsr4/sreg_reg[3]} .original_name {{sreg[3]}}
+set_db -quiet {inst:lfsr4/sreg_reg[3]} .orig_hdl_instantiated false
+set_db -quiet {inst:lfsr4/sreg_reg[3]} .single_bit_orig_name {sreg[3]}
+set_db -quiet {inst:lfsr4/sreg_reg[3]} .gint_phase_inversion false
+set_db -quiet {pin:lfsr4/sreg_reg[3]/Q} .original_name {sreg[3]/q}
+set_db -quiet {inst:lfsr4/sreg_reg[2]} .original_name {{sreg[2]}}
+set_db -quiet {inst:lfsr4/sreg_reg[2]} .orig_hdl_instantiated false
+set_db -quiet {inst:lfsr4/sreg_reg[2]} .single_bit_orig_name {sreg[2]}
+set_db -quiet {inst:lfsr4/sreg_reg[2]} .gint_phase_inversion false
+set_db -quiet {pin:lfsr4/sreg_reg[2]/Q} .original_name {sreg[2]/q}
+# BEGIN PMBIST SECTION
+# END PMBIST SECTION
+# BEGIN PHYSICAL ANNOTATION SECTION
+# END PHYSICAL ANNOTATION SECTION
+set_db -quiet source_verbose true
+#############################################################
+#####   FLOW WRITE   ########################################
+##
+## Written by Genus(TM) Synthesis Solution version 18.10-p003_1
+## flowkit v18.10-p001_1
+## Written on 15:30:02 02-Oct 2025
+#############################################################
+#####   Flow Definitions   ##################################
+
+#############################################################
+#####   Step Definitions   ##################################
+
+
+#############################################################
+#####   Attribute Definitions   #############################
+
+if {[is_attribute flow_edit_wildcard_end_steps -obj_type root]} {set_db flow_edit_wildcard_end_steps {}}
+if {[is_attribute flow_edit_wildcard_start_steps -obj_type root]} {set_db flow_edit_wildcard_start_steps {}}
+if {[is_attribute flow_footer_tcl -obj_type root]} {set_db flow_footer_tcl {}}
+if {[is_attribute flow_header_tcl -obj_type root]} {set_db flow_header_tcl {}}
+if {[is_attribute flow_metadata -obj_type root]} {set_db flow_metadata {}}
+if {[is_attribute flow_step_begin_tcl -obj_type root]} {set_db flow_step_begin_tcl {}}
+if {[is_attribute flow_step_check_tcl -obj_type root]} {set_db flow_step_check_tcl {}}
+if {[is_attribute flow_step_end_tcl -obj_type root]} {set_db flow_step_end_tcl {}}
+if {[is_attribute flow_step_order -obj_type root]} {set_db flow_step_order {}}
+if {[is_attribute flow_summary_tcl -obj_type root]} {set_db flow_summary_tcl {}}
+if {[is_attribute flow_template_feature_definition -obj_type root]} {set_db flow_template_feature_definition {}}
+if {[is_attribute flow_template_type -obj_type root]} {set_db flow_template_type {}}
+if {[is_attribute flow_template_version -obj_type root]} {set_db flow_template_version {}}
+if {[is_attribute flow_user_templates -obj_type root]} {set_db flow_user_templates {}}
+
+
+#############################################################
+#####   Flow History   ######################################
+
+if {[is_attribute flow_branch -obj_type root]} {set_db flow_branch {}}
+if {[is_attribute flow_caller_data -obj_type root]} {set_db flow_caller_data {}}
+if {[is_attribute flow_current -obj_type root]} {set_db flow_current {}}
+if {[is_attribute flow_hier_path -obj_type root]} {set_db flow_hier_path {}}
+if {[is_attribute flow_db_directory -obj_type root]} {set_db flow_db_directory dbs}
+if {[is_attribute flow_exit_when_done -obj_type root]} {set_db flow_exit_when_done false}
+if {[is_attribute flow_history -obj_type root]} {set_db flow_history {}}
+if {[is_attribute flow_log_directory -obj_type root]} {set_db flow_log_directory logs}
+if {[is_attribute flow_mail_on_error -obj_type root]} {set_db flow_mail_on_error false}
+if {[is_attribute flow_mail_to -obj_type root]} {set_db flow_mail_to {}}
+if {[is_attribute flow_metrics_file -obj_type root]} {set_db flow_metrics_file {}}
+if {[is_attribute flow_metrics_snapshot_parent_uuid -obj_type root]} {set_db flow_metrics_snapshot_parent_uuid {}}
+if {[is_attribute flow_metrics_snapshot_uuid -obj_type root]} {set_db flow_metrics_snapshot_uuid c48825b8-a09c-4287-b734-ddefcc2a9a3a}
+if {[is_attribute flow_overwrite_db -obj_type root]} {set_db flow_overwrite_db false}
+if {[is_attribute flow_report_directory -obj_type root]} {set_db flow_report_directory reports}
+if {[is_attribute flow_run_tag -obj_type root]} {set_db flow_run_tag {}}
+if {[is_attribute flow_schedule -obj_type root]} {set_db flow_schedule {}}
+if {[is_attribute flow_script -obj_type root]} {set_db flow_script {}}
+if {[is_attribute flow_starting_db -obj_type root]} {set_db flow_starting_db {}}
+if {[is_attribute flow_status_file -obj_type root]} {set_db flow_status_file {}}
+if {[is_attribute flow_step_canonical_current -obj_type root]} {set_db flow_step_canonical_current {}}
+if {[is_attribute flow_step_current -obj_type root]} {set_db flow_step_current {}}
+if {[is_attribute flow_step_last -obj_type root]} {set_db flow_step_last {}}
+if {[is_attribute flow_step_last_msg -obj_type root]} {set_db flow_step_last_msg {}}
+if {[is_attribute flow_step_last_status -obj_type root]} {set_db flow_step_last_status not_run}
+if {[is_attribute flow_step_next -obj_type root]} {set_db flow_step_next {}}
+if {[is_attribute flow_working_directory -obj_type root]} {set_db flow_working_directory .}
+
+#############################################################
+#####   User Defined Attributes   ###########################
+

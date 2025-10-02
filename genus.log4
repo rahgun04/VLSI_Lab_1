@@ -1,0 +1,904 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2018 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 18.10-p003_1, built Thu Jun 07 23:53:27 BST 2018
+Options: 
+Date:    Thu Oct 02 15:06:23 2025
+Host:    ee-mill1 (x86_64 w/Linux 3.10.0-1160.81.1.0.1.el7.x86_64) (12cores*48cpus*2physical cpus*Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz 30720KB) (395983880KB)
+OS:      Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+Checking out license: Genus_Synthesis
+
+Loading tool scripts...
+
+Finished loading tool scripts (9 seconds elapsed).
+
+WARNING: This version of the tool is 2673 days old.
+@genus:root: 1> source SRC/synth.tcl
+Sourcing './SRC/synth.tcl' (Thu Oct 02 15:06:55 BST 2025)...
+#@ Begin verbose source SRC/synth.tcl
+@file(synth.tcl) 15: set _HDL_DIRECTORY ./SRC
+@file(synth.tcl) 16: set HDL_FILES [list lfsr4.sv]           ;* list of sources
+#@ End verbose source SRC/synth.tcl
+invalid command name "*"
+@genus:root: 2> vim SRC/synth.tcl
+invalid command name "vim"
+@genus:root: 3> # Variable setup
+@genus:root: 4> set _HDL_DIRECTORY ./SRC
+./SRC
+@genus:root: 5> set HDL_FILES [list lfsr4.sv]           ;# list of sources
+lfsr4.sv
+@genus:root: 6> set DESIGN lfsr4                        ;# top-level module name
+lfsr4
+@genus:root: 7> 
+@genus:root: 7> # Clock name should match the clock signal name in HDL (i.e. clk, CLK, ...)
+@genus:root: 8> set CLOCK_NAME clk
+clk
+@genus:root: 9> set CLOCK_PERIOD_ps 1000
+1000
+@genus:root: 10> 
+@genus:root: 10> set GEN_EFF medium                      ;# synthesis effort
+medium
+@genus:root: 11> set MAP_OPT_EFF high                    ;# mapping and optimization effort
+high
+@genus:root: 12> 
+@genus:root: 12> set _OUTPUTS_PATH OUTPUTS               ;# where to store output files
+OUTPUTS
+@genus:root: 13> set _REPORTS_PATH REPORTS               ;# where to store synthesis reports
+REPORTS
+@genus:root: 14> set_db init_hdl_search_path $_HDL_DIRECTORY;
+  Setting attribute of root '/': 'init_hdl_search_path' = ./SRC
+1 ./SRC
+@genus:root: 15> set_db library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib";
+
+Threads Configured:3
+
+  Message Summary for Library tcbn65lpbwp7twc.lib:
+  ************************************************
+  Could not find an attribute in the library. [LBR-436]: 638
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  An unsupported construct was detected in this library. [LBR-40]: 1
+  ************************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.080000, 125.000000) in library 'tcbn65lpbwp7twc.lib'.
+        : The nominal operating condition represents either the nominal PVT values if specified in the library source, or the default PVT values (1.0, 1.0, 1.0).
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNABWP7T' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Otherwise, the library cell will be marked as unusable and as timing model.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNABWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP16BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP16BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP32BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP32BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP4BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP4BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP64BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP64BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP8BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP8BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAPBWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAPBWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP10BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP10BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP2BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP2BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP3BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP3BWP7T' must have an output pin.
+  Setting attribute of root '/': 'library' = /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib
+1 /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib
+@genus:root: 16> set_db lef_library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef";
+
+  According to lef_library, there are total 10 routing layers [ V(5) / H(5) ]
+
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.09, 3) of 'WIDTH' for layers 'M1' and 'AP' is too large.
+        : Check the consistency of the parameters.
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.2, 6.5) of 'PITCH' for layers 'M6' and 'AP' is too large.
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.09, 2) of 'MINSPACING' for layers 'M1' and 'AP' is too large.
+  Library has 345 usable logic and 151 usable sequential lib-cells.
+  Setting attribute of root '/': 'lef_library' = /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef
+1 /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef
+@genus:root: 17> set_db cap_table_file "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/techfiles/captable/cln65lp_1p09m+alrdl_top2_rcworst.captable";
+
+  According to cap_table_file, there are total 10 routing layers [ V(5) / H(5) ]
+
+Warning : The variant range of wire parameters is too large. [PHYS-12]
+        : The variant range (0.09, 3) of 'WIDTH' for layers 'M1' and 'M10' is too large.
+  Setting attribute of root '/': 'cap_table_file' = /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/techfiles/captable/cln65lp_1p09m+alrdl_top2_rcworst.captable
+1 /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/techfiles/captable/cln65lp_1p09m+alrdl_top2_rcworst.captable
+@genus:root: 18> set_db information_level 4            ;# Output verbosity level - 1 (default) to 11
+  Setting attribute of root '/': 'information_level' = 4
+1 4
+@genus:root: 19> set_db use_tiehilo_for_const duplicate;
+  Setting attribute of root '/': 'use_tiehilo_for_const' = duplicate
+1 duplicate
+@genus:root: 20> # Load the design and check basic syntax
+@genus:root: 21> read_hdl -sv ${HDL_FILES}
+@genus:root: 22> elaborate ${DESIGN}
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'lfsr4' from file './SRC/lfsr4.sv'.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'lfsr4'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+        Computing net loads.
+UM:  flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:            12            124                                      elaborate
+design:lfsr4
+@genus:root: 23> check_design -unresolved
+  Checking the design.
+
+ 	 Check Design Report
+	 -------------------- 
+
+  Unresolved References & Empty Modules
+  ------------------------------------- 
+No unresolved references in design 'lfsr4'
+
+No empty modules in design 'lfsr4'
+
+  Done Checking the design.
+@genus:root: 24> check_design -unloaded
+  Checking the design.
+
+ 	 Check Design Report
+	 -------------------- 
+
+ Unloaded Pin(s), Port(s)
+ -------------------------
+No unloaded sequential element in 'lfsr4'
+
+No unloaded port in 'lfsr4'
+
+  Done Checking the design.
+@genus:root: 25> 
+@genus:root: 25> # Set time units for SDC commands to be consistent with Genus commands
+@genus:root: 26> set_time_unit -picoseconds
+@genus:root: 27> set_load_unit -femtofarads
+@genus:root: 28> 
+@genus:root: 28> # Tell Genus about the clock signal
+@genus:root: 29> create_clock -domain domain1 -name ${CLOCK_NAME} -period ${CLOCK_PERIOD_ps} [get_db ports ${CLOCK_NAME}]
+@genus:root: 30> set_db clock:${DESIGN}/${CLOCK_NAME} .setup_uncertainty [expr 0.02 * ${CLOCK_PERIOD_ps}]
+  Setting attribute of clock 'clk': 'setup_uncertainty' = 20.0
+1 20.0
+@genus:root: 31> set_clock_uncertainty -hold  [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
+@genus:root: 32> set_clock_uncertainty -setup [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
+@genus:root: 33> set_clock_transition -rise  50 ${CLOCK_NAME}
+@genus:root: 34> set_clock_transition -fall  50 ${CLOCK_NAME}
+@genus:root: 35> 
+@genus:root: 35> set_db syn_generic_effort $GEN_EFF
+  Setting attribute of root '/': 'syn_generic_effort' = medium
+1 medium
+@genus:root: 36> syn_generic
+Info    : Deleting instances not driving any primary outputs. [GLO-34]
+        : Deleting 1 hierarchical instance. 
+Following instance is deleted as they do not drive any primary output:
+'mux_sreg_12_9'.
+        : Optimizations such as constant propagation or redundancy removal could change the connections so a hierarchical instance does not drive any primary outputs anymore. To see the list of deleted hierarchical instances, set the 'information_level' attribute to 2 or above. If the message is truncated set the message attribute 'truncate' to false to see the complete list. To prevent this optimization, set the 'delete_unloaded_insts' root/subdesign attribute to 'false' or 'preserve' instance attribute to 'true'.
+Current PLE settings:
+
+Aspect ratio        : 1.00
+Shrink factor       : 1.00
+Scale of res/length : 1.00
+Scale of cap/length : 1.00
+Net derating factor : 1.00
+Thermal factor      : 1.04
+Via Resistance      : 3.16 ohm (from cap_table_file)
+Site size           : 1.60 um (from lef [tech+cell])
+
+                                   Capacitance    
+  Layer                             / Length           Data source:
+Name        Direction Utilization  (pF/micron)         cap_table_file
+--------------------------------------------------
+M1              H         0.00        0.000241    
+M2              V         1.00        0.000201    
+M3              H         1.00        0.000201    
+M4              V         1.00        0.000201    
+M5              H         1.00        0.000201    
+M6              V         1.00        0.000201    
+M7              H         1.00        0.000194    
+M8              V         1.00        0.000331    
+M9              H         1.00        0.000337    
+M10             V         1.00        0.000311 ** 
+
+** = 'M10' is dropped because its width (3) is too large (threshold 2)
+
+                                    Resistance     
+  Layer                              / Length           Data source:
+Name        Direction Utilization  (ohm/micron)         cap_table_file
+---------------------------------------------------
+M1              H         0.00         2.292428    
+M2              V         1.00         1.672727    
+M3              H         1.00         1.672727    
+M4              V         1.00         1.672727    
+M5              H         1.00         1.672727    
+M6              V         1.00         1.672727    
+M7              H         1.00         1.672727    
+M8              V         1.00         0.067690    
+M9              H         1.00         0.067690    
+M10             V         1.00         0.011187 ** 
+
+** = 'M10' is dropped because its width (3) is too large (threshold 2)
+
+                                        Area       
+  Layer                               / Length          Data source:
+Name        Direction Utilization     (micron)          lef_library
+---------------------------------------------------
+M1              H         0.00         0.090000    
+M2              V         1.00         0.100000    
+M3              H         1.00         0.100000    
+M4              V         1.00         0.100000    
+M5              H         1.00         0.100000    
+M6              V         1.00         0.100000    
+M7              H         1.00         0.100000    
+M8              V         1.00         0.400000    
+M9              H         1.00         0.400000    
+AP              V         1.00         3.000000 ** 
+
+** = 'AP' is dropped because its width (3) is too large (threshold 2)
+
+Info    : Synthesizing. [SYNTH-1]
+        : Synthesizing 'lfsr4' to generic gates using 'medium' effort.
+  Setting attribute of design 'lfsr4': 'is_excp_dupcln' = false
+PBS_Generic-Start - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Start' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:13(00:02:19) |  00:00:00(00:00:00) |   0.0(  0.0) |   15:08:46 (Oct02) |  261.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+        Computing net loads.
+Info    : Partition Based Synthesis execution skipped. [PHYS-752]
+        : Design size is less than the partition size '100000' for distributed generic optimization to kick in.
+Current PLE settings:
+
+Aspect ratio        : 1.00
+Shrink factor       : 1.00
+Scale of res/length : 1.00
+Scale of cap/length : 1.00
+Net derating factor : 1.00
+Thermal factor      : 1.04
+Via Resistance      : 3.16 ohm (from cap_table_file)
+Site size           : 1.60 um (from lef [tech+cell])
+
+                                   Capacitance    
+  Layer                             / Length           Data source:
+Name        Direction Utilization  (pF/micron)         cap_table_file
+--------------------------------------------------
+M1              H         0.00        0.000241    
+M2              V         1.00        0.000201    
+M3              H         1.00        0.000201    
+M4              V         1.00        0.000201    
+M5              H         1.00        0.000201    
+M6              V         1.00        0.000201    
+M7              H         1.00        0.000194    
+M8              V         1.00        0.000331    
+M9              H         1.00        0.000337    
+M10             V         1.00        0.000311 ** 
+
+** = 'M10' is dropped because its width (3) is too large (threshold 2)
+
+                                    Resistance     
+  Layer                              / Length           Data source:
+Name        Direction Utilization  (ohm/micron)         cap_table_file
+---------------------------------------------------
+M1              H         0.00         2.292428    
+M2              V         1.00         1.672727    
+M3              H         1.00         1.672727    
+M4              V         1.00         1.672727    
+M5              H         1.00         1.672727    
+M6              V         1.00         1.672727    
+M7              H         1.00         1.672727    
+M8              V         1.00         0.067690    
+M9              H         1.00         0.067690    
+M10             V         1.00         0.011187 ** 
+
+** = 'M10' is dropped because its width (3) is too large (threshold 2)
+
+                                        Area       
+  Layer                               / Length          Data source:
+Name        Direction Utilization     (micron)          lef_library
+---------------------------------------------------
+M1              H         0.00         0.090000    
+M2              V         1.00         0.100000    
+M3              H         1.00         0.100000    
+M4              V         1.00         0.100000    
+M5              H         1.00         0.100000    
+M6              V         1.00         0.100000    
+M7              H         1.00         0.100000    
+M8              V         1.00         0.400000    
+M9              H         1.00         0.400000    
+AP              V         1.00         3.000000 ** 
+
+** = 'AP' is dropped because its width (3) is too large (threshold 2)
+
+Info    : Pre-processed datapath logic. [DPOPT-6]
+        : No pre-processing optimizations applied to datapath logic in 'lfsr4'.
+Info    : Skipping datapath optimization. [DPOPT-5]
+        : There is no datapath logic in 'lfsr4'.
+      Removing temporary intermediate hierarchies under lfsr4
+Current PLE settings:
+
+Aspect ratio        : 1.00
+Shrink factor       : 1.00
+Scale of res/length : 1.00
+Scale of cap/length : 1.00
+Net derating factor : 1.00
+Thermal factor      : 1.04
+Via Resistance      : 3.16 ohm (from cap_table_file)
+Site size           : 1.60 um (from lef [tech+cell])
+
+                                   Capacitance    
+  Layer                             / Length           Data source:
+Name        Direction Utilization  (pF/micron)         cap_table_file
+--------------------------------------------------
+M1              H         0.00        0.000241    
+M2              V         1.00        0.000201    
+M3              H         1.00        0.000201    
+M4              V         1.00        0.000201    
+M5              H         1.00        0.000201    
+M6              V         1.00        0.000201    
+M7              H         1.00        0.000194    
+M8              V         1.00        0.000331    
+M9              H         1.00        0.000337    
+M10             V         1.00        0.000311 ** 
+
+** = 'M10' is dropped because its width (3) is too large (threshold 2)
+
+                                    Resistance     
+  Layer                              / Length           Data source:
+Name        Direction Utilization  (ohm/micron)         cap_table_file
+---------------------------------------------------
+M1              H         0.00         2.292428    
+M2              V         1.00         1.672727    
+M3              H         1.00         1.672727    
+M4              V         1.00         1.672727    
+M5              H         1.00         1.672727    
+M6              V         1.00         1.672727    
+M7              H         1.00         1.672727    
+M8              V         1.00         0.067690    
+M9              H         1.00         0.067690    
+M10             V         1.00         0.011187 ** 
+
+** = 'M10' is dropped because its width (3) is too large (threshold 2)
+
+                                        Area       
+  Layer                               / Length          Data source:
+Name        Direction Utilization     (micron)          lef_library
+---------------------------------------------------
+M1              H         0.00         0.090000    
+M2              V         1.00         0.100000    
+M3              H         1.00         0.100000    
+M4              V         1.00         0.100000    
+M5              H         1.00         0.100000    
+M6              V         1.00         0.100000    
+M7              H         1.00         0.100000    
+M8              V         1.00         0.400000    
+M9              H         1.00         0.400000    
+AP              V         1.00         3.000000 ** 
+
+** = 'AP' is dropped because its width (3) is too large (threshold 2)
+
+Mapper: Libraries have:
+	domain _default_: 345 combo usable cells and 151 sequential usable cells
+      Mapping 'lfsr4'...
+        Preparing the circuit
+Multi-threaded constant propagation [1|0] ...
+        Done preparing the circuit
+Multi-threaded Virtual Mapping    (8 threads, 8 of 48 CPUs usable)
+ 
+Global mapping target info
+==========================
+Cost Group 'clk' target slack:    27 ps
+Target path end-point (Pin: sreg_reg[3]/d)
+
+     Pin                 Type         Fanout Load Arrival   
+                                             (fF)   (ps)    
+------------------------------------------------------------
+(clock clk)     <<<  launch                             0 R 
+sreg_reg[2]/clk                                             
+sreg_reg[2]/q   (u)  unmapped_d_flop       2  3.2           
+sreg_reg[3]/d   <<<  unmapped_d_flop                        
+sreg_reg[3]/clk      setup                                  
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+(clock clk)          capture                         1000 R 
+                     uncertainty                            
+------------------------------------------------------------
+Cost Group   : 'clk' (path_group 'clk')
+Start-point  : sreg_reg[2]/clk
+End-point    : sreg_reg[3]/d
+
+(u) : Net has unmapped pin(s).
+
+The global mapper estimates a slack for this path of 409ps.
+ 
+PBS_Generic_Opt-Post - Elapsed_Time 1, CPU_Time 0.9987750000000002
+stamp 'PBS_Generic_Opt-Post' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:13(00:02:19) |  00:00:00(00:00:00) |   0.0(  0.0) |   15:08:46 (Oct02) |  261.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:13(00:02:20) |  00:00:00(00:00:01) | 100.0(100.0) |   15:08:47 (Oct02) |  261.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+        Computing net loads.
+PBS_Generic-Postgen HBO Optimizations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Postgen HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:13(00:02:19) |  00:00:00(00:00:00) |   0.0(  0.0) |   15:08:46 (Oct02) |  261.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:13(00:02:20) |  00:00:00(00:00:01) | 100.0(100.0) |   15:08:47 (Oct02) |  261.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:13(00:02:20) |  00:00:00(00:00:00) |   0.0(  0.0) |   15:08:47 (Oct02) |  261.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+##>=================== Cadence Confidential (Generic-Logical) ===================
+##>Main Thread Summary:
+##>----------------------------------------------------------------------------------------
+##>STEP                           Elapsed       WNS       TNS     Insts      Area    Memory
+##>----------------------------------------------------------------------------------------
+##>G:Initial                            0         -         -         5        30       261
+##>G:Setup                              0         -         -         -         -         -
+##>G:Launch ST                          0         -         -         -         -         -
+##>G:Design Partition                   0         -         -         -         -         -
+##>G:Create Partition Netlists          0         -         -         -         -         -
+##>G:Init Power                         0         -         -         -         -         -
+##>G:Budgeting                          0         -         -         -         -         -
+##>G:Derenv-DB                          0         -         -         -         -         -
+##>G:Debug Outputs                      0         -         -         -         -         -
+##>G:ST loading                         0         -         -         -         -         -
+##>G:Distributed                        0         -         -         -         -         -
+##>G:Timer                              0         -         -         -         -         -
+##>G:Assembly                           0         -         -         -         -         -
+##>G:DFT                                0         -         -         -         -         -
+##>G:Const Prop                         0         -         -         7        34       261
+##>G:Misc                               1
+##>----------------------------------------------------------------------------------------
+##>Total Elapsed                        1
+##>========================================================================================
+
+======================= Sequential Deletion Report =============================
+================================================================================
+
+Info    : Done synthesizing. [SYNTH-2]
+        : Done synthesizing 'lfsr4' to generic gates.
+        Computing net loads.
+     flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:             2             22                                      syn_generic
+@genus:root: 37> write_snapshot -directory ${_REPORTS_PATH}/map -tag map
+        Computing arrivals and requireds.
+
+
+Working Directory = /home/rg1322/VLSI/VLSI_Lab_1
+QoS Summary for lfsr4
+================================================================================
+Metric                          map            
+================================================================================
+Slack (ps):                       406
+  R2R (ps):                       406
+  I2R (ps):                  no_value
+  R2O (ps):                  no_value
+  I2O (ps):                  no_value
+  CG  (ps):                  no_value
+TNS (ps):                           0
+  R2R (ps):                         0
+  I2R (ps):                  no_value
+  R2O (ps):                  no_value
+  I2O (ps):                  no_value
+  CG  (ps):                  no_value
+Failing Paths:                      0
+Cell Area:                         37
+Total Cell Area:                   37
+Leaf Instances:                     7
+Total Instances:                    7
+Utilization (%):                 0.00
+Tot. Net Length (um):        no_value
+Avg. Net Length (um):        no_value
+Route Overflow H (%):        no_value
+Route Overflow V (%):        no_value
+MBCI(%) (bits/gate) :            0.00
+Norm Cong Hotspot Area:
+  Max Cong:                  no_value
+  Tot Cong:                  no_value
+================================================================================
+CPU  Runtime (h:m:s):        00:00:11
+Real Runtime (h:m:s):        00:03:02
+CPU  Elapsed (h:m:s):        00:00:15
+Real Elapsed (h:m:s):        00:03:03
+Memory (MB):                   784.44
+================================================================================
+================================================================================
+Flow Settings:
+================================================================================
+Total Runtime (h:m:s): 00:03:02
+Total Memory (MB):     784.44
+Executable Version:    18.10-p003_1
+================================================================================
+Total Cell Area =  Cell Area + Physical Cell Area
+Total Instances =  Leaf Instances + Physical Instances
+
+
+
+
+Warning : The details given in report might be incorrect or incomplete. [RPT-80]
+        : The design design:lfsr4 should be mapped to get accurate area details.
+        : Map the design using syn_map before using the '-detail' option of the 'report_area' command.
+Warning : Possible timing problems have been detected in this design. [TIM-11]
+        : The design is 'lfsr4'.
+        : Use 'report timing -lint' for more information.
+Warning : Did not find power models for RTL power analysis. [PA-17]
+        : Design design:lfsr4 has no power models available.
+        : The RTL power analysis results are more accurate when detailed power models are used. Use command 'build_rtl_power_models' to build detailed power models.
+Finished exporting design database to file 'REPORTS/map/map_lfsr4.db' for 'lfsr4' (command execution time mm:ss cpu = 00:00, real = 00:00).
+Finished generating snapshot at stage map (command execution time mm:ss cpu = 00:00, real = 00:00).
+@genus:root: 38> report_dp > ${_REPORTS_PATH}/map/${DESIGN}_datapath.rpt
+Beginning report datapath command
+Warning : The filename, column and line number information will not be available in the report. [RPT_DP-100]
+        : The attribute for getting HDL filename and line number is not set.
+        : You must set the 'hdl_track_filename_row_col' attribute to 'true' (before elaborate) to enable filename, column, and line number tracking in the datapath report.
+@genus:root: 39> report_summary -directory ${_REPORTS_PATH}
+
+
+Working Directory = /home/rg1322/VLSI/VLSI_Lab_1
+QoS Summary for lfsr4
+================================================================================
+Metric                          map            
+================================================================================
+Slack (ps):                       406
+  R2R (ps):                       406
+  I2R (ps):                  no_value
+  R2O (ps):                  no_value
+  I2O (ps):                  no_value
+  CG  (ps):                  no_value
+TNS (ps):                           0
+  R2R (ps):                         0
+  I2R (ps):                  no_value
+  R2O (ps):                  no_value
+  I2O (ps):                  no_value
+  CG  (ps):                  no_value
+Failing Paths:                      0
+Cell Area:                         37
+Total Cell Area:                   37
+Leaf Instances:                     7
+Total Instances:                    7
+Utilization (%):                 0.00
+Tot. Net Length (um):        no_value
+Avg. Net Length (um):        no_value
+Route Overflow H (%):        no_value
+Route Overflow V (%):        no_value
+MBCI(%) (bits/gate) :            0.00
+Norm Cong Hotspot Area:
+  Max Cong:                  no_value
+  Tot Cong:                  no_value
+================================================================================
+CPU  Runtime (h:m:s):        00:00:11
+Real Runtime (h:m:s):        00:03:02
+CPU  Elapsed (h:m:s):        00:00:15
+Real Elapsed (h:m:s):        00:03:03
+Memory (MB):                   784.44
+================================================================================
+================================================================================
+Flow Settings:
+================================================================================
+Total Runtime (h:m:s): 00:05:02
+Total Memory (MB):     784.44
+Executable Version:    18.10-p003_1
+================================================================================
+Total Cell Area =  Cell Area + Physical Cell Area
+Total Instances =  Leaf Instances + Physical Instances
+
+
+
+
+@genus:root: 40> ls
+OUTPUTS
+README.md
+REPORTS
+SAVES
+SRC
+diagrams
+fv
+genus.cmd
+genus.cmd1
+genus.cmd2
+genus.cmd3
+genus.cmd4
+genus.log
+genus.log1
+genus.log2
+genus.log3
+genus.log4
+group_allocation.md
+group_allocation.txt
+@genus:root: 41> ls REPORTS/
+final
+final.rpt
+lfsr4_area.rpt
+lfsr4_datapath_incr.rpt
+lfsr4_gates.rpt
+lfsr4_messages.rpt
+lfsr4_power.rpt
+lfsr4_qor.rpt
+lfsr4_timing.rpt
+map
+opt
+@genus:root: 42> ls \OUTPUTS
+DESIGN
+lfsr4.script
+lfsr4_synth.sdc
+lfsr4_synth.sdf
+lfsr4_synth.v
+@genus:root: 43> source SRC/synth.tcl
+Sourcing './SRC/synth.tcl' (Thu Oct 02 15:18:38 BST 2025)...
+#@ Begin verbose source SRC/synth.tcl
+@file(synth.tcl) 15: set _HDL_DIRECTORY ./SRC
+@file(synth.tcl) 16: set HDL_FILES [list lfsr4.sv]           ; list of sources
+@file(synth.tcl) 17: set DESIGN lfsr4                        ; top-level module name
+#@ End verbose source SRC/synth.tcl
+invalid command name "top-level"
+@genus:root: 44> source SRC/synth.tcl
+Sourcing './SRC/synth.tcl' (Thu Oct 02 15:19:33 BST 2025)...
+#@ Begin verbose source SRC/synth.tcl
+@file(synth.tcl) 15: set _HDL_DIRECTORY ./SRC
+@file(synth.tcl) 16: set HDL_FILES [list lfsr4.sv]           ;# list of sources
+@file(synth.tcl) 17: set DESIGN lfsr4                        ;# top-level module name
+@file(synth.tcl) 20: set CLOCK_NAME clk
+@file(synth.tcl) 21: set CLOCK_PERIOD_ps 1000
+@file(synth.tcl) 23: set GEN_EFF medium                      ;# synthesis effort
+@file(synth.tcl) 24: set MAP_OPT_EFF high                    ;# mapping and optimization effort
+@file(synth.tcl) 26: set _OUTPUTS_PATH OUTPUTS               ;# where to store output files
+@file(synth.tcl) 27: set _REPORTS_PATH REPORTS               ;# where to store synthesis reports
+@file(synth.tcl) 33: set_db init_hdl_search_path $_HDL_DIRECTORY;
+  Setting attribute of root '/': 'init_hdl_search_path' = ./SRC
+@file(synth.tcl) 34: set_db library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib";
+Freeing libraries in memory (/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.080000, 125.000000) in library 'tcbn65lpbwp7twc.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNABWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNABWP7T' must have an output pin.
+Info    : An output library pin lacks a function attribute. [LBR-41]
+        : Output pin 'BHDBWP7T/Z' has no function.
+        : If the remainder of this library cell's semantic checks are successful, it will be considered as a timing-model (because one of its outputs does not have a valid function.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP16BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP16BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP32BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP32BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP4BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP4BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP64BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP64BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP8BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP8BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAPBWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAPBWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP10BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP10BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP2BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP2BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP3BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP3BWP7T' must have an output pin.
+  Library has 345 usable logic and 151 usable sequential lib-cells.
+  Setting attribute of root '/': 'library' = /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib
+@file(synth.tcl) 35: set_db lef_library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef";
+Error   : Lef files are read when design exists. [PHYS-6187] [set_db]
+        : Lef files, if any, should be read before 'elaboration'.
+        : Set the 'lef_library' attribute before doing 'elab'.
+Error   : The data value for this attribute is invalid. [TUI-24] [set_db]
+        : The value '/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef' cannot be set for attribute 'lef_library'.
+        : To see the usage/description for this attribute, type '::legacy::set_attribute -h <attr_name> *' (in legacy UI mode) or 'help * <attr_name> -detail' (in CUI mode).
+#@ End verbose source SRC/synth.tcl
+1
+@genus:root: 45> source SRC/synth.tcl
+Sourcing './SRC/synth.tcl' (Thu Oct 02 15:25:11 BST 2025)...
+#@ Begin verbose source SRC/synth.tcl
+@file(synth.tcl) 15: set _HDL_DIRECTORY ./SRC
+@file(synth.tcl) 16: set HDL_FILES [list lfsr4.sv]           ;# list of sources
+@file(synth.tcl) 17: set DESIGN lfsr4                        ;# top-level module name
+@file(synth.tcl) 20: set CLOCK_NAME clk
+@file(synth.tcl) 21: set CLOCK_PERIOD_ps 1000
+@file(synth.tcl) 23: set GEN_EFF medium                      ;# synthesis effort
+@file(synth.tcl) 24: set MAP_OPT_EFF high                    ;# mapping and optimization effort
+@file(synth.tcl) 26: set _OUTPUTS_PATH OUTPUTS               ;# where to store output files
+@file(synth.tcl) 27: set _REPORTS_PATH REPORTS               ;# where to store synthesis reports
+@file(synth.tcl) 33: set_db init_hdl_search_path $_HDL_DIRECTORY;
+  Setting attribute of root '/': 'init_hdl_search_path' = ./SRC
+@file(synth.tcl) 34: set_db library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib";
+Freeing libraries in memory (/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib)
+
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.080000, 125.000000) in library 'tcbn65lpbwp7twc.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNABWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNABWP7T' must have an output pin.
+Info    : An output library pin lacks a function attribute. [LBR-41]
+        : Output pin 'BHDBWP7T/Z' has no function.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP16BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP16BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP32BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP32BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP4BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP4BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP64BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP64BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP8BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAP8BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAPBWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DCAPBWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP10BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP10BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP2BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP2BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP3BWP7T' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'GDCAP3BWP7T' must have an output pin.
+  Library has 345 usable logic and 151 usable sequential lib-cells.
+  Setting attribute of root '/': 'library' = /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/timing_power_noise/NLDM/tcbn65lpbwp7t_220a/tcbn65lpbwp7twc.lib
+@file(synth.tcl) 35: set_db lef_library "/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef";
+Error   : Lef files are read when design exists. [PHYS-6187] [set_db]
+        : Lef files, if any, should be read before 'elaboration'.
+Error   : The data value for this attribute is invalid. [TUI-24] [set_db]
+        : The value '/usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef' cannot be set for attribute 'lef_library'.
+#@ End verbose source SRC/synth.tcl
+1
+@genus:root: 46> # Variable setup
+@genus:root: 47> set _HDL_DIRECTORY ./SRC
+./SRC
+@genus:root: 48> set HDL_FILES [list lfsr4.sv]           ;# list of sources
+lfsr4.sv
+@genus:root: 49> set DESIGN lfsr4                        ;# top-level module name
+lfsr4
+@genus:root: 50> 
+@genus:root: 50> # Clock name should match the clock signal name in HDL (i.e. clk, CLK, ...)
+@genus:root: 51> set CLOCK_NAME clk
+clk
+@genus:root: 52> set CLOCK_PERIOD_ps 1000
+1000
+@genus:root: 53> 
+@genus:root: 53> set GEN_EFF medium                      ;# synthesis effort
+medium
+@genus:root: 54> set MAP_OPT_EFF high                    ;# mapping and optimization effort
+high
+@genus:root: 55> 
+@genus:root: 55> set _OUTPUTS_PATH OUTPUTS               ;# where to store output files
+OUTPUTS
+@genus:root: 56> set _REPORTS_PATH REPORTS               ;# where to store synthesis reports
+REPORTS
+@genus:root: 57> # Load the design and check basic syntax
+@genus:root: 58> read_hdl -sv ${HDL_FILES}
+@genus:root: 59> elaborate ${DESIGN}
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'lfsr4' from file './SRC/lfsr4.sv'.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'lfsr4'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+design:lfsr4_1
+@genus:root: 60> check_design -unresolved
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [check_design]
+        : There is no unique design here.
+        : Specify a design by using the cd command to change to that design's directory or specify the design as an argument for the command.
+Failed on check_design
+@genus:root: 61> check_design -unloaded
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [check_design]
+        : There is no unique design here.
+Failed on check_design
+@genus:root: 62> 
+@genus:root: 62> # Set time units for SDC commands to be consistent with Genus commands
+@genus:root: 63> set_time_unit -picoseconds
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [set_time_unit]
+        : There is no unique design here.
+Failed on find_unique_design
+@genus:root: 64> set_load_unit -femtofarads
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [set_load_unit]
+        : There is no unique design here.
+Failed on find_unique_design
+@genus:root: 65> 
+@genus:root: 65> # Tell Genus about the clock signal
+@genus:root: 66> create_clock -domain domain1 -name ${CLOCK_NAME} -period ${CLOCK_PERIOD_ps} [get_db ports ${CLOCK_NAME}]
+Error   : 'current_design' has not been set. [TUI-186] [get_db]
+        : There are multiple designs, 'lfsr4', 'lfsr4_1'....
+        : Use command 'set_top_module' to set 'current_design'.
+1
+@genus:root: 67> set_db clock:${DESIGN}/${CLOCK_NAME} .setup_uncertainty [expr 0.02 * ${CLOCK_PERIOD_ps}]
+  Setting attribute of clock 'clk': 'setup_uncertainty' = 20.0
+1 20.0
+@genus:root: 68> set_clock_uncertainty -hold  [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [set_clock_uncertainty]
+        : There is no unique design here.
+Failed on find_unique_design
+@genus:root: 69> set_clock_uncertainty -setup [expr 0.02 * ${CLOCK_PERIOD_ps}] ${CLOCK_NAME}
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [set_clock_uncertainty]
+        : There is no unique design here.
+Failed on find_unique_design
+@genus:root: 70> set_clock_transition -rise  50 ${CLOCK_NAME}
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [set_clock_transition]
+        : There is no unique design here.
+Failed on find_unique_design
+@genus:root: 71> set_clock_transition -fall  50 ${CLOCK_NAME}
+Error   : Multiple designs are available. Specify the design you want to use. [TUI-17] [set_clock_transition]
+        : There is no unique design here.
+Failed on find_unique_design
+@genus:root: 72> 
+
+Another Ctrl-C within 1 second will terminate the tool.
+Abnormal exit.
+
+Another Ctrl-C within 1 second will terminate the tool.
+Encountered a problem while exiting.

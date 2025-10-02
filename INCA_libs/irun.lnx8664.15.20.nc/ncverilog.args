@@ -1,0 +1,9 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
+-sv
+OUTPUTS/lfsr4_soc.v
+SRC/lfsr4_tb.sv
++sdf_verbose
++access+rwc

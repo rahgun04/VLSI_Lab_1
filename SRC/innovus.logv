@@ -1,0 +1,311 @@
+[10/02 15:47:11      0s] 
+[10/02 15:47:11      0s] Cadence Innovus(TM) Implementation System.
+[10/02 15:47:11      0s] Copyright 2018 Cadence Design Systems, Inc. All rights reserved worldwide.
+[10/02 15:47:11      0s] 
+[10/02 15:47:11      0s] Version:	v18.10-p002_1, built Tue May 29 19:19:55 PDT 2018
+[10/02 15:47:11      0s] Options:	
+[10/02 15:47:11      0s] Date:		Thu Oct  2 15:47:11 2025
+[10/02 15:47:11      0s] Host:		ee-mill1 (x86_64 w/Linux 3.10.0-1160.81.1.0.1.el7.x86_64) (12cores*48cpus*Intel(R) Xeon(R) CPU E5-2680 v3 @ 2.50GHz 30720KB)
+[10/02 15:47:11      0s] OS:		Red Hat Enterprise Linux Server release 7.9 (Maipo)
+[10/02 15:47:11      0s] 
+[10/02 15:47:11      0s] License:
+[10/02 15:47:11      0s] 		invs	Innovus Implementation System	18.1	checkout succeeded
+[10/02 15:47:11      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[10/02 15:47:26     13s] @(#)CDS: Innovus v18.10-p002_1 (64bit) 05/29/2018 19:19 (Linux 2.6.18-194.el5)
+[10/02 15:47:26     13s] @(#)CDS: NanoRoute 18.10-p002_1 NR180522-1057/18_10-UB (database version 2.30, 418.7.1) {superthreading v1.46}
+[10/02 15:47:26     13s] @(#)CDS: AAE 18.10-p004 (64bit) 05/29/2018 (Linux 2.6.18-194.el5)
+[10/02 15:47:26     13s] @(#)CDS: CTE 18.10-p003_1 () May 15 2018 10:23:07 ( )
+[10/02 15:47:26     13s] @(#)CDS: SYNTECH 18.10-a012_1 () Apr 19 2018 01:27:21 ( )
+[10/02 15:47:26     13s] @(#)CDS: CPE v18.10-p005
+[10/02 15:47:26     13s] @(#)CDS: IQRC/TQRC 18.1.1-s118 (64bit) Fri Mar 23 17:23:45 PDT 2018 (Linux 2.6.18-194.el5)
+[10/02 15:47:26     13s] @(#)CDS: OA 22.50-p083 Tue Jan  2 17:02:41 2018
+[10/02 15:47:26     13s] @(#)CDS: SGN 10.10-p124 (19-Aug-2014) (64 bit executable)
+[10/02 15:47:26     13s] @(#)CDS: RCDB 11.13
+[10/02 15:47:26     13s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_9061_ee-mill1_rg1322_Czrlxn.
+
+[10/02 15:47:26     13s] Change the soft stacksize limit to 0.2%RAM (773 mbytes). Set global soft_stack_size_limit to change the value.
+[10/02 15:47:27     13s] 
+[10/02 15:47:27     13s] **INFO:  MMMC transition support version v31-84 
+[10/02 15:47:27     13s] 
+[10/02 15:47:27     13s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[10/02 15:47:27     13s] <CMD> suppressMessage ENCEXT-2799
+[10/02 15:47:28     13s] <CMD> win
+[10/02 15:47:36     14s] <CMD> set init_verilog OUTPUTS/lfsr4_synth.v
+[10/02 15:47:36     14s] <CMD> set init_top_cell lfsr4
+[10/02 15:47:36     14s] <CMD> set init_lef_file {  /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef  /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tphn65lpnv2od3_sl_200b/mt_2/9lm/lef/tphn65lpnv2od3_sl_9lm.lef  /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tpbn65v_200b/wb/9m/9M_6X2Z/lef/tpbn65v_9lm.lef  }
+[10/02 15:47:36     14s] <CMD> set init_mmmc_file ./mmmc_timing.tcl
+[10/02 15:47:36     14s] <CMD> set init_gnd_net VSS
+[10/02 15:47:36     14s] <CMD> set init_pwr_net VDD
+[10/02 15:47:36     14s] <CMD> setDesignMode -process 65
+[10/02 15:47:36     14s] Applying the recommended capacitance filtering threshold values for 65nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+[10/02 15:47:36     14s] 	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+[10/02 15:47:36     14s] 	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+[10/02 15:47:36     14s] 	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+[10/02 15:47:36     14s] 	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+[10/02 15:47:36     14s] Updating process node dependent CCOpt properties for the 65nm process node.
+[10/02 15:47:37     14s] <CMD> init_design
+[10/02 15:47:37     14s] #% Begin Load MMMC data ... (date=10/02 15:47:37, mem=436.7M)
+[10/02 15:47:37     14s] **ERROR: (TCLCMD-989):	cannot open SDC file 'OUTPUTS/lfsr4_synth.sdc' for mode 'CONSTRAINTS'
+
+[10/02 15:48:05     16s] <CMD> set init_verilog OUTPUTS/lfsr4_synth.v
+[10/02 15:48:05     16s] <CMD> set init_top_cell lfsr4
+[10/02 15:48:06     16s] <CMD> set init_lef_file {  /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef  /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tphn65lpnv2od3_sl_200b/mt_2/9lm/lef/tphn65lpnv2od3_sl_9lm.lef  /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tpbn65v_200b/wb/9m/9M_6X2Z/lef/tpbn65v_9lm.lef  }
+[10/02 15:48:19     17s] <CMD> set init_mmmc_file SRC/mmmc_timing.tcl
+[10/02 15:48:24     18s] <CMD> set init_gnd_net VSS
+[10/02 15:48:24     18s] <CMD> set init_pwr_net VDD
+[10/02 15:48:24     18s] <CMD> setDesignMode -process 65
+[10/02 15:48:24     18s] Applying the recommended capacitance filtering threshold values for 65nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+[10/02 15:48:24     18s] 	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+[10/02 15:48:24     18s] 	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+[10/02 15:48:24     18s] 	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+[10/02 15:48:24     18s] 	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+[10/02 15:48:24     18s] Updating process node dependent CCOpt properties for the 65nm process node.
+[10/02 15:48:24     18s] <CMD> init_design
+[10/02 15:48:24     18s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[10/02 15:48:24     18s] **ERROR: (IMPSYT-6284):	Failed to open file SRC/mmmc_timing.tcl for read.
+[10/02 15:49:07     24s] 
+[10/02 15:49:07     24s] Loading LEF file /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tcbn65lpbwp7t_141a/lef/tcbn65lpbwp7t_9lmT2.lef ...
+[10/02 15:49:07     24s] Set DBUPerIGU to M2 pitch 400.
+[10/02 15:49:07     24s] 
+[10/02 15:49:07     24s] Loading LEF file /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tphn65lpnv2od3_sl_200b/mt_2/9lm/lef/tphn65lpnv2od3_sl_9lm.lef ...
+[10/02 15:49:07     24s] WARNING (LEFPARS-2001): No VERSION statement found, using the default value 5.8. See file /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tphn65lpnv2od3_sl_200b/mt_2/9lm/lef/tphn65lpnv2od3_sl_9lm.lef at line 20669.
+[10/02 15:49:07     24s] 
+[10/02 15:49:07     24s] Loading LEF file /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tpbn65v_200b/wb/9m/9M_6X2Z/lef/tpbn65v_9lm.lef ...
+[10/02 15:49:07     24s] WARNING (LEFPARS-2001): No VERSION statement found, using the default value 5.8. See file /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tpbn65v_200b/wb/9m/9M_6X2Z/lef/tpbn65v_9lm.lef at line 575.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AVSS' in macro 'PVSS3AC' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AVSS' in macro 'PVSS3A' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSSPST' in macro 'PVSS2CDG' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AVSS' in macro 'PVSS2ANA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-201):	Pin 'VSS' in macro 'PVSS2AC' has no ANTENNADIFFAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-201' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSS' in macro 'PVSS2AC' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-201):	Pin 'VSS' in macro 'PVSS2A' has no ANTENNADIFFAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-201' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSS' in macro 'PVSS2A' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AVSS' in macro 'PVSS1ANA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AVDD' in macro 'PVDD2ANA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AIO' in macro 'PDB3AC' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'AIO' in macro 'PDB3A' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSSESD' in macro 'PCLAMPAC' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSSESD' in macro 'PCLAMPA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSSESD' in macro 'PCLAMP2ANA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'VSSESD' in macro 'PCLAMP1ANA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] **WARN: (IMPLF-200):	Pin 'I' in macro 'ANTENNABWP7T' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[10/02 15:49:07     24s] Type 'man IMPLF-200' for more detail.
+[10/02 15:49:07     24s] 
+[10/02 15:49:07     24s] viaInitial starts at Thu Oct  2 15:49:07 2025
+viaInitial ends at Thu Oct  2 15:49:07 2025
+Loading view definition file from SRC/mmmc_timing.tcl
+[10/02 15:49:07     24s] *** End library_loading (cpu=0.00min, real=0.00min, mem=0.0M, fe_cpu=0.41min, fe_real=1.93min, fe_mem=577.4M) ***
+[10/02 15:49:07     24s] **ERROR: (IMPSYT-16038):	The specified file 'OUTPUTS/lfsr4_synth.v' could not be found. Check your file system, correct the file name.
+[10/02 15:49:07     24s] **ERROR: (IMPIMEX-7008):	No netlist files are found.
+[10/02 15:49:07     24s] 
+[10/02 15:50:01     29s] <CMD> set init_gnd_net VSS
+[10/02 15:50:01     29s] <CMD> set init_pwr_net VDD
+[10/02 15:50:01     29s] <CMD> setDesignMode -process 65
+[10/02 15:50:01     29s] Applying the recommended capacitance filtering threshold values for 65nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+[10/02 15:50:01     29s] 	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+[10/02 15:50:01     29s] 	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+[10/02 15:50:01     29s] 	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+[10/02 15:50:01     29s] 	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+[10/02 15:50:01     29s] Updating process node dependent CCOpt properties for the 65nm process node.
+[10/02 15:50:02     29s] <CMD> init_design
+[10/02 15:50:02     29s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[10/02 15:50:02     29s] % Begin Load MMMC data ... (date=10/02 15:50:02, mem=449.3M)
+[10/02 15:50:02     29s] Extraction setup Started 
+[10/02 15:50:02     29s] Innovus terminated by internal (SEGV) error/signal...
+[10/02 15:50:02     29s] *** Stack trace:
+*** Stack trace:
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0xfc83a5b]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(syStackTrace+0x7c)[0xfc83e73]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0x40836c5]
+/lib64/libpthread.so.0(+0xf630)[0x7f64b2e41630]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN12peLayerPitch17computeLayerPitchEv+0x2c6)[0xaaac886]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN14peEngineClient12getLayerInfoERSt6vectorI11eeLayerInfoSaIS1_EE+0x82e)[0xaaa767e]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN21eeExtEngineDesignData12setLayerInfoEv+0x3e)[0x453e74e]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0xa9d3f35]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_Z10dbMCRCInitv+0xb)[0xa9dabcb]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_Z28peiInitializeExtractionSetUpb+0x2b)[0xa9db1bb]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0xcd2fbee]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN6TAMmmc14updateRcCornerEP14TAMmmcRcCornerPKcf9tabooleanR18TAMmmcTripleFactorS4_fS4_S6_S4_S6_S4_fS4_fS4_S6_S4_S6_S4_S3_S3_S3_fS4_+0x40b)[0xfe9d6fb]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_Z30TaCmd_createOrUpdate_rc_cornerPvP10Tcl_InterpiPPc9tabooleanP6tcmCmd+0x84b)[0x10c9a65b]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN10tcmBaseCmd7executeEP10Tcl_InterpiPPc+0x15e)[0x11a9b3de]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN6tcmMgr9cmdParserEPvP10Tcl_InterpiPPc+0x6a4)[0x11a847b4]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(TclInvokeStringCommand+0x80)[0x14bfa100]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(TclNRRunCallbacks+0x47)[0x14bfe9b7]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0x14c00aa1]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(Tcl_EvalEx+0x16)[0x14c014a6]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(TclNREvalObjEx+0x6f)[0x14c0154f]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0x14cb585b]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0x14c141c1]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(TclNRRunCallbacks+0x47)[0x14bfe9b7]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(Tcl_RecordAndEvalObj+0xf4)[0x14c9b8a4]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(Tcl_RecordAndEval+0x38)[0x14c9ba08]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_Z17rdaEditCmdLineEndPc+0x186)[0x4153ff6]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN9seConsole7sesMode9DoExecuteERKSsPv+0xc7)[0xcdc4437]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN7Redline9EmacsMode10AcceptLineEv+0x3e)[0xdbb1a4e]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN7Redline11ModeCommandINS_9EmacsModeEE15CommandFnNoKeysERKN5boost8functionIFvRS1_EEERNS_6EditorE+0x61)[0xdbbbb91]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN5boost6detail8function26void_function_obj_invoker2INS_3_bi6bind_tINS3_11unspecifiedENS_8functionIFvRN7Redline6EditorEEEENS3_5list1INS_3argILi1EEEEEEEvS9_RKNS7_14KeyCombinationEE6invokeERNS1_15function_bufferES9_SJ_+0x1b)[0xdbcab1b]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZNK7Redline7Command3RunERNS_6EditorERKNS_14KeyCombinationE+0x1c)[0xdbc970c]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_ZN7Redline6Editor9Internals3RunEb+0xd5)[0xdbb1195]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0x14cffea7]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(Tcl_ServiceEvent+0x87)[0x14cc1957]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(Tcl_DoOneEvent+0x129)[0x14cc1c59]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/lib/64bit/libtq.so(_ZN17TqEventDispatcher13processEventsE6QFlagsIN10QEventLoop17ProcessEventsFlagEE+0x68)[0x7f64b8474438]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4(_ZN10QEventLoop13processEventsE6QFlagsINS_17ProcessEventsFlagEE+0x2f)[0x7f64b67d802f]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4(_ZN10QEventLoop4execE6QFlagsINS_17ProcessEventsFlagEE+0x17d)[0x7f64b67d832d]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4(_ZN16QCoreApplication4execEv+0x89)[0x7f64b67df5a9]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/lib/64bit/libtq.so(_ZN13TqApplication4execEv+0xd4)[0x7f64b8473f84]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(_Z12edi_app_initP10Tcl_Interp+0x279)[0x4127869]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(Tcl_MainEx+0x177)[0x14cbc497]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus(main+0x1de)[0x39cee4e]
+/lib64/libc.so.6(__libc_start_main+0xf5)[0x7f64b1f65555]
+/usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/innovus/bin/64bit/innovus[0x407ffd1]
+========================================
+               pstack
+========================================
+Thread 9 (Thread 0x7f64af7cb700 (LWP 9195)):
+#0  0x00007f64b2038b63 in select () from /lib64/libc.so.6
+#1  0x0000000014cffb88 in NotifierThreadProc ()
+#2  0x0000000004312c09 in create_head(void*) ()
+#3  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#4  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 8 (Thread 0x7f64a7fef700 (LWP 9199)):
+#0  0x00007f64b2e409dd in accept () from /lib64/libpthread.so.0
+#1  0x000000001399c3a5 in ProcessInfo::handleConnection(void*) ()
+#2  0x0000000004312c09 in create_head(void*) ()
+#3  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#4  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 7 (Thread 0x7f64a77ee700 (LWP 9200)):
+#0  0x00007f64b2038b63 in select () from /lib64/libc.so.6
+#1  0x00000000139957db in ProcessInfo::sampleUsage(void*) ()
+#2  0x0000000004312c09 in create_head(void*) ()
+#3  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#4  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 6 (Thread 0x7f64a6fed700 (LWP 9203)):
+#0  0x00007f64b20089fd in nanosleep () from /lib64/libc.so.6
+#1  0x00007f64b2008894 in sleep () from /lib64/libc.so.6
+#2  0x000000000fc9db7b in syiPeakMem(void*) ()
+#3  0x0000000004312c09 in create_head(void*) ()
+#4  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#5  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 5 (Thread 0x7f64a67ec700 (LWP 9204)):
+#0  0x00007f64b2e40e9d in nanosleep () from /lib64/libpthread.so.0
+#1  0x0000000005267d66 in rdaiLicRecheck(void*) ()
+#2  0x0000000004312c09 in create_head(void*) ()
+#3  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#4  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 4 (Thread 0x7f64a0d73700 (LWP 9439)):
+#0  0x00007f64b2e413c1 in sigwait () from /lib64/libpthread.so.0
+#1  0x000000000408039d in ctrlCHandle(void*) ()
+#2  0x0000000004312c09 in create_head(void*) ()
+#3  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#4  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 3 (Thread 0x7f648bd0b700 (LWP 12599)):
+#0  0x00007f64b2e3da35 in pthread_cond_wait@@GLIBC_2.3.2 () from /lib64/libpthread.so.0
+#1  0x00007f64b66b09f6 in QWaitCondition::wait(QMutex*, unsigned long) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#2  0x00007f64b73bcdde in QFileInfoGatherer::run() () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtGui.so.4
+#3  0x00007f64b66aff4b in QThreadPrivate::start(void*) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#4  0x0000000004312c09 in create_head(void*) ()
+#5  0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#6  0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 2 (Thread 0x7f648b409700 (LWP 12600)):
+#0  0x00007f64b2038b63 in select () from /lib64/libc.so.6
+#1  0x00007f64b680b59b in qt_safe_select(int, fd_set*, fd_set*, fd_set*, timeval const*) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#2  0x00007f64b680fd73 in QEventDispatcherUNIXPrivate::doSelect(QFlags<QEventLoop::ProcessEventsFlag>, timeval*) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#3  0x00007f64b6810472 in QEventDispatcherUNIX::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#4  0x00007f64b67d802f in QEventLoop::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#5  0x00007f64b67d832d in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#6  0x00007f64b66ad39f in QThread::exec() () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#7  0x00007f64b67b5d93 in QInotifyFileSystemWatcherEngine::run() () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#8  0x00007f64b66aff4b in QThreadPrivate::start(void*) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#9  0x0000000004312c09 in create_head(void*) ()
+#10 0x00007f64b2e39ea5 in start_thread () from /lib64/libpthread.so.0
+#11 0x00007f64b2041b2d in clone () from /lib64/libc.so.6
+Thread 1 (Thread 0x7f64bb63d480 (LWP 9061)):
+#0  0x00007f64b2008659 in waitpid () from /lib64/libc.so.6
+#1  0x00007f64b1f85f62 in do_system () from /lib64/libc.so.6
+#2  0x00007f64b1f86311 in system () from /lib64/libc.so.6
+#3  0x000000000fc83aaa in syStackTraceDump(_IO_FILE*, bool) ()
+#4  0x000000000fc83e73 in syStackTrace ()
+#5  0x00000000040836c5 in rdaiErrorHandler(int, siginfo*, void*) ()
+#6  <signal handler called>
+#7  0x000000000aaac886 in peLayerPitch::computeLayerPitch() ()
+#8  0x000000000aaa767e in peEngineClient::getLayerInfo(std::vector<eeLayerInfo, std::allocator<eeLayerInfo> >&) ()
+#9  0x000000000453e74e in eeExtEngineDesignData::setLayerInfo() ()
+#10 0x000000000a9d3f35 in eeExtEngineDesignData::resetDesignData() [clone .constprop.548] ()
+#11 0x000000000a9dabcb in dbMCRCInit() ()
+#12 0x000000000a9db1bb in peiInitializeExtractionSetUp(bool) ()
+#13 0x000000000cd2fbee in toiCteUpdateRcCornerPostCallback(TAMmmcRcCorner*, TAMmmcUpdateRcCornerCbkInfo*) ()
+#14 0x000000000fe9d6fb in TAMmmc::updateRcCorner(TAMmmcRcCorner*, char const*, float, taboolean, TAMmmcTripleFactor&, taboolean, float, taboolean, TAMmmcTripleFactor&, taboolean, TAMmmcTripleFactor&, taboolean, float, taboolean, float, taboolean, TAMmmcTripleFactor&, taboolean, TAMmmcTripleFactor&, taboolean, char const*, char const*, char const*, float, taboolean) ()
+#15 0x0000000010c9a65b in TaCmd_createOrUpdate_rc_corner(void*, Tcl_Interp*, int, char**, taboolean, tcmCmd*) ()
+#16 0x0000000011a9b3de in tcmBaseCmd::execute(Tcl_Interp*, int, char**) ()
+#17 0x0000000011a847b4 in tcmMgr::cmdParser(void*, Tcl_Interp*, int, char**) ()
+#18 0x0000000014bfa100 in TclInvokeStringCommand ()
+#19 0x0000000014bfe9b7 in TclNRRunCallbacks ()
+#20 0x0000000014c00aa1 in TclEvalEx ()
+#21 0x0000000014c014a6 in Tcl_EvalEx ()
+#22 0x0000000014c0154f in TclNREvalObjEx ()
+#23 0x0000000014cb585b in TclNREvalFile ()
+#24 0x0000000014c141c1 in TclNRSourceObjCmd ()
+#25 0x0000000014bfe9b7 in TclNRRunCallbacks ()
+#26 0x0000000014c9b8a4 in Tcl_RecordAndEvalObj ()
+#27 0x0000000014c9ba08 in Tcl_RecordAndEval ()
+#28 0x0000000004153ff6 in rdaEditCmdLineEnd(char*) ()
+#29 0x000000000cdc4437 in seConsole::sesMode::DoExecute(std::string const&, void*) ()
+#30 0x000000000dbb1a4e in Redline::EmacsMode::AcceptLine() ()
+#31 0x000000000dbbbb91 in Redline::ModeCommand<Redline::EmacsMode>::CommandFnNoKeys(boost::function<void (Redline::EmacsMode&)> const&, Redline::Editor&) ()
+#32 0x000000000dbcab1b in boost::detail::function::void_function_obj_invoker2<boost::_bi::bind_t<boost::_bi::unspecified, boost::function<void (Redline::Editor&)>, boost::_bi::list1<boost::arg<1> > >, void, Redline::Editor&, Redline::KeyCombination const&>::invoke(boost::detail::function::function_buffer&, Redline::Editor&, Redline::KeyCombination const&) ()
+#33 0x000000000dbc970c in Redline::Command::Run(Redline::Editor&, Redline::KeyCombination const&) const ()
+#34 0x000000000dbb1195 in Redline::Editor::Internals::Run(bool) ()
+#35 0x0000000014cffea7 in FileHandlerEventProc ()
+#36 0x0000000014cc1957 in Tcl_ServiceEvent ()
+#37 0x0000000014cc1c59 in Tcl_DoOneEvent ()
+#38 0x00007f64b8474438 in TqEventDispatcher::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/lib/64bit/libtq.so
+#39 0x00007f64b67d802f in QEventLoop::processEvents(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#40 0x00007f64b67d832d in QEventLoop::exec(QFlags<QEventLoop::ProcessEventsFlag>) () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#41 0x00007f64b67df5a9 in QCoreApplication::exec() () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/Qt/64bit/lib/libcdsQtCore.so.4
+#42 0x00007f64b8473f84 in TqApplication::exec() () from /usr/local/cadence/INNOVUS_18.10.000/tools.lnx86/lib/64bit/libtq.so
+#43 0x0000000004127869 in edi_app_init(Tcl_Interp*) ()
+#44 0x0000000014cbc497 in Tcl_MainEx ()
+#45 0x00000000039cee4e in main ()
+========================================
+                gdb
+========================================
+Using: gdb
+
+[10/02 15:50:32     29s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Thu Oct  2 15:50:32 2025
+  Total CPU time:     0:00:45
+  Total real time:    0:03:23
+  Peak memory (main): 449.88MB
+
+[10/02 15:50:32     29s] 
+[10/02 15:50:32     29s] *** Memory Usage v#1 (Current mem = 577.426M, initial mem = 251.484M) ***
+[10/02 15:50:32     29s] 
+[10/02 15:50:32     29s] *** Summary of all messages that are not suppressed in this session:
+[10/02 15:50:32     29s] Severity  ID               Count  Summary                                  
+[10/02 15:50:32     29s] WARNING   IMPLF-200           15  Pin '%s' in macro '%s' has no ANTENNAGAT...
+[10/02 15:50:32     29s] WARNING   IMPLF-201            2  Pin '%s' in macro '%s' has no ANTENNADIF...
+[10/02 15:50:32     29s] ERROR     IMPSYT-6284          2  Failed to open file %s for read.         
+[10/02 15:50:32     29s] ERROR     IMPSYT-16038         1  The specified file '%s' could not be fou...
+[10/02 15:50:32     29s] ERROR     IMPIMEX-7008         1  No netlist files are found.              
+[10/02 15:50:32     29s] ERROR     TCLCMD-989           1  cannot open SDC file '%s' for mode '%s'  
+[10/02 15:50:32     29s] *** Message Summary: 17 warning(s), 5 error(s)
+[10/02 15:50:32     29s] 
+[10/02 15:50:32     29s] --- Ending "Innovus" (totcpu=0:00:29.8, real=0:03:21, mem=577.4M) ---

@@ -1,0 +1,171 @@
+(DELAYFILE
+  (SDFVERSION "3.0")
+  (DESIGN "lfsr4")
+  (DATE "Thu Oct  2 16:24:06 2025")
+  (VENDOR "Cadence Design Systems, Inc.")
+  (PROGRAM "Innovus")
+  (VERSION "v18.10-p002_1 ((64bit) 05/29/2018 19:19 (Linux 2.6.18-194.el5))")
+  (DIVIDER /)
+  (VOLTAGE 1.080000::1.080000)
+  (PROCESS "1.000000::1.000000")
+  (TEMPERATURE 125.000000::125.000000)
+  (TIMESCALE 1.0 ns)
+
+  (CELL
+    (CELLTYPE  "lfsr4")
+    (INSTANCE)
+      (DELAY
+	(ABSOLUTE
+	(INTERCONNECT FE_PHC0_rst/Z g20/I  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk sreg_reg\[1\]/CP  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk sreg_reg\[4\]/CP  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk sreg_reg\[3\]/CP  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT clk sreg_reg\[2\]/CP  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT rst FE_PHC0_rst/I  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[4\]/Q g16__8780/A2  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[4\]/Q data_out[3]  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[3\]/Q g16__8780/A1  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[3\]/Q sreg_reg\[4\]/D  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[3\]/Q data_out[2]  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[2\]/Q sreg_reg\[3\]/D  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[2\]/Q data_out[1]  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[1\]/Q sreg_reg\[2\]/D  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT sreg_reg\[1\]/Q data_out[0]  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT g20/ZN sreg_reg\[1\]/SDN  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT g20/ZN sreg_reg\[4\]/CDN  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT g20/ZN sreg_reg\[3\]/CDN  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT g20/ZN sreg_reg\[2\]/CDN  (0.000::0.000) (0.000::0.000))
+	(INTERCONNECT g16__8780/Z sreg_reg\[1\]/D  (0.000::0.000) (0.000::0.000))
+	)
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DEL01BWP7T")
+    (INSTANCE  FE_PHC0_rst)
+      (DELAY
+	(ABSOLUTE
+	(IOPATH I Z  (0.141::0.141) (0.140::0.140))
+	)
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFSNQD1BWP7T")
+    (INSTANCE  sreg_reg\[1\])
+      (DELAY
+	(ABSOLUTE
+	(IOPATH (posedge CP) Q  (0.257::0.257) (0.305::0.305))
+	(IOPATH SDN Q  (0.274::0.311) ())
+	(COND CP==1'b0&&D==1'b0 (IOPATH SDN Q  (0.274::0.311) ()))
+	(COND CP==1'b0&&D==1'b1 (IOPATH SDN Q  (0.274::0.311) ()))
+	(COND CP==1'b1&&D==1'b0 (IOPATH SDN Q  (0.274::0.311) ()))
+	(COND CP==1'b1&&D==1'b1 (IOPATH SDN Q  (0.274::0.311) ()))
+	)
+      )
+      (TIMINGCHECK
+	(RECREM (posedge SDN) (posedge CP) (0.025::0.025) (0.060::0.060))
+	(SETUPHOLD (posedge D) (posedge CP) (0.081::0.081) (-0.022::-0.022))
+	(SETUPHOLD (negedge D) (posedge CP) (0.086::0.086) (0.034::0.034))
+	(WIDTH (posedge CP) (0.151::0.151))
+	(WIDTH (negedge CP) (0.185::0.185))
+	(WIDTH (negedge SDN) (0.248::0.248))
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "CKXOR2D0BWP7T")
+    (INSTANCE  g16__8780)
+      (DELAY
+	(ABSOLUTE
+	(IOPATH (posedge A1) Z  (0.149::0.149) (0.220::0.220))
+	(IOPATH (negedge A1) Z  (0.184::0.184) (0.134::0.134))
+	(COND A2==1'b1 (IOPATH A1 Z  (0.184::0.184) (0.220::0.220)))
+	(COND A2==1'b0 (IOPATH A1 Z  (0.149::0.149) (0.134::0.134)))
+	(IOPATH (posedge A2) Z  (0.161::0.161) (0.241::0.241))
+	(IOPATH (negedge A2) Z  (0.211::0.211) (0.171::0.171))
+	(COND A1==1'b1 (IOPATH A2 Z  (0.211::0.211) (0.241::0.241)))
+	(COND A1==1'b0 (IOPATH A2 Z  (0.161::0.161) (0.171::0.171)))
+	)
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFCNQD1BWP7T")
+    (INSTANCE  sreg_reg\[4\])
+      (DELAY
+	(ABSOLUTE
+	(IOPATH CDN Q  () (0.181::0.182))
+	(COND CP==1'b0&&D==1'b0 (IOPATH CDN Q  () (0.181::0.182)))
+	(COND CP==1'b0&&D==1'b1 (IOPATH CDN Q  () (0.181::0.182)))
+	(COND CP==1'b1&&D==1'b0 (IOPATH CDN Q  () (0.181::0.182)))
+	(COND CP==1'b1&&D==1'b1 (IOPATH CDN Q  () (0.181::0.182)))
+	(IOPATH (posedge CP) Q  (0.310::0.310) (0.301::0.301))
+	)
+      )
+      (TIMINGCHECK
+	(WIDTH (negedge CDN) (0.265::0.265))
+	(SETUPHOLD (posedge D) (posedge CP) (0.126::0.126) (-0.058::-0.058))
+	(SETUPHOLD (negedge D) (posedge CP) (0.069::0.069) (0.038::0.038))
+	(WIDTH (posedge CP) (0.170::0.170))
+	(WIDTH (negedge CP) (0.202::0.202))
+	(RECREM (posedge CDN) (posedge CP) (-0.112::-0.112) (0.216::0.216))
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFCNQD1BWP7T")
+    (INSTANCE  sreg_reg\[3\])
+      (DELAY
+	(ABSOLUTE
+	(IOPATH CDN Q  () (0.197::0.197))
+	(COND CP==1'b0&&D==1'b0 (IOPATH CDN Q  () (0.197::0.197)))
+	(COND CP==1'b0&&D==1'b1 (IOPATH CDN Q  () (0.197::0.197)))
+	(COND CP==1'b1&&D==1'b0 (IOPATH CDN Q  () (0.197::0.197)))
+	(COND CP==1'b1&&D==1'b1 (IOPATH CDN Q  () (0.197::0.197)))
+	(IOPATH (posedge CP) Q  (0.328::0.328) (0.314::0.314))
+	)
+      )
+      (TIMINGCHECK
+	(WIDTH (negedge CDN) (0.265::0.265))
+	(SETUPHOLD (posedge D) (posedge CP) (0.115::0.115) (-0.048::-0.048))
+	(SETUPHOLD (negedge D) (posedge CP) (0.062::0.062) (0.043::0.043))
+	(WIDTH (posedge CP) (0.170::0.170))
+	(WIDTH (negedge CP) (0.202::0.202))
+	(RECREM (posedge CDN) (posedge CP) (-0.112::-0.112) (0.216::0.216))
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "DFCNQD1BWP7T")
+    (INSTANCE  sreg_reg\[2\])
+      (DELAY
+	(ABSOLUTE
+	(IOPATH CDN Q  () (0.179::0.179))
+	(COND CP==1'b0&&D==1'b0 (IOPATH CDN Q  () (0.179::0.179)))
+	(COND CP==1'b0&&D==1'b1 (IOPATH CDN Q  () (0.179::0.179)))
+	(COND CP==1'b1&&D==1'b0 (IOPATH CDN Q  () (0.179::0.179)))
+	(COND CP==1'b1&&D==1'b1 (IOPATH CDN Q  () (0.179::0.179)))
+	(IOPATH (posedge CP) Q  (0.306::0.306) (0.299::0.299))
+	)
+      )
+      (TIMINGCHECK
+	(WIDTH (negedge CDN) (0.265::0.265))
+	(SETUPHOLD (posedge D) (posedge CP) (0.111::0.111) (-0.044::-0.044))
+	(SETUPHOLD (negedge D) (posedge CP) (0.063::0.063) (0.043::0.043))
+	(WIDTH (posedge CP) (0.170::0.170))
+	(WIDTH (negedge CP) (0.202::0.202))
+	(RECREM (posedge CDN) (posedge CP) (-0.112::-0.112) (0.216::0.216))
+      )
+  )
+
+  (CELL
+    (CELLTYPE  "INVD0BWP7T")
+    (INSTANCE  g20)
+      (DELAY
+	(ABSOLUTE
+	(IOPATH I ZN  (0.150::0.150) (0.110::0.110))
+	)
+      )
+  )
+)

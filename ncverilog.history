@@ -1,0 +1,4 @@
+s1(02Oct2025:16:47:45):  ncverilog /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/verilog/tcbn65lpbwp7t_141a/tcbn65lpbwp7t.v /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/verilog/tphn65lpnv2od3_sl_200a/tphn65lpnv2od3_sl.v 
+s2(02Oct2025:16:47:46):  ncverilog -sv OUTPUTS/lfsr4_soc.v SRC/lfsr4_tb.sv +sdf_verbose +access+rwc 
+s3(02Oct2025:16:54:03):  ncverilog /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/verilog/tcbn65lpbwp7t_141a/tcbn65lpbwp7t.v /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Front_End/verilog/tphn65lpnv2od3_sl_200a/tphn65lpnv2od3_sl.v 
+s4(02Oct2025:16:54:03):  ncverilog -sv OUTPUTS/lfsr4_soc.v SRC/lfsr4_tb.sv +sdf_verbose +access+rwc 
