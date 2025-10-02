@@ -42,7 +42,7 @@ If you are EE4 students, you may not have extensive exposure to Github and Markd
 ### Task 1 - Connect to the Teaching Server
 ---
 
-To access Imperial College's resources from your personal laptop when you are not in College, you will need to connect to the Universal Access provision after running [Zscaler](https://uafiles.cc.ic.ac.uk/). After authentication, you will be able to access file systems and computer servers.
+To access Imperial College's resources from your personal laptop when you are not in College, you will need to connect to the Universal Access provision after running [Zscaler](https://www.imperial.ac.uk/admin-services/ict/self-service/connect-communicate/remote-access/unified-access/). After authentication, you will be able to access file systems and computer servers.
 
 Cadence is installed and runs on the EEE teaching servers, which you access via SSH. There are two
  servers available:
