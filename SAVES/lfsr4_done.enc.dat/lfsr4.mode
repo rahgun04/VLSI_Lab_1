@@ -5,9 +5,12 @@ catch { setAnalysisMode -clkSrcPath true }
 catch { setAnalysisMode -clockPropagation sdcControl }
 catch { setAnalysisMode -skew true }
 catch { setAnalysisMode -usefulSkew true }
+catch { setOptMode -activeHoldViews { functional_typ  } }
 catch { setOptMode -activeSetupViews { functional_typ } }
+catch { setOptMode -autoHoldViews { functional_typ } }
 catch { setOptMode -autoSetupViews { functional_typ} }
 catch { setOptMode -autoTDGRSetupViews { functional_typ} }
+catch { setOptMode -autoViewHoldTargetSlack 0 }
 catch { setOptMode -deleteInst true }
 catch { setOptMode -drcMargin 0 }
 catch { setOptMode -fixDrc true }

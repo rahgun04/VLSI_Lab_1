@@ -19,7 +19,7 @@ set VERILOG_FILES [list OUTPUTS/lfsr4_synth.v]    ;# output synthsis task
 set SDC_FILE OUTPUTS/lfsr4_synth.sdc              ;# specify constraints for PnR
 
 # Set Floorplan parameters (unit in um)
-set CORE_ASPECT_RATIO 1.0                         ;# square layout
+set CORE_ASPECT_RATIO 0.1                         ;# square layout
 set CORE_UTILIZATION 0.6                          ;# 40% for routing of signal & power
 set COREGAP 5                                     ;# gap from power ring to core
 
@@ -41,7 +41,7 @@ set init_lef_file { \
     /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tphn65lpnv2od3_sl_200b/mt_2/9lm/lef/tphn65lpnv2od3_sl_9lm.lef \
     /usr/local/cadence/kits/tsmc/beLibs/65nm/TSMCHOME/digital/Back_End/lef/tpbn65v_200b/wb/9m/9M_6X2Z/lef/tpbn65v_9lm.lef \
     }                                             ;# use these abstract standard cell for PnR
-set init_mmmc_file "./mmmc_timing.tcl"            ;# specify corner conditions the chip operates under (i.e. temperature, voltages etc.)
+set init_mmmc_file "SRC/mmmc_timing.tcl"            ;# specify corner conditions the chip operates under (i.e. temperature, voltages etc.)
 set init_gnd_net {VSS}
 set init_pwr_net {VDD}
 

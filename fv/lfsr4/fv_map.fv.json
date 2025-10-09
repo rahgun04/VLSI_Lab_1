@@ -201,14 +201,14 @@
 "type":"instance"},
 
 {"index": "1", 
- "date": "Thu Oct 02 15:30:01 BST 2025",
- "seconds": 1759415401.433106,
+ "date": "Wed Oct 08 12:32:47 BST 2025",
+ "seconds": 1759923167.9413688,
  "netlist": "fv/lfsr4/fv_map.v.gz", 
  "design_name": "lfsr4", 
  "synth_workdir": "/home/rg1322/VLSI/VLSI_Lab_1", 
  "synthesis_command":"",
  "current_label": "fv_map", 
  "previous_label": "rtl", 
- "write_verif_file_runtime": 0.33975299999999997 
+ "write_verif_file_runtime": 0.301074 
  }
 ]
